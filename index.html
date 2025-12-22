@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduBuddy Dashboard</title>
+    <style>
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #2575fc; /* dark blue */
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(-45deg, #6a11cb, #2575fc, #ff6a00, #ffb347);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            border-radius: 10px;
+            margin: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-image {
+            max-width: 200px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .start-btn {
+            padding: 12px 25px;
+            font-size: 1rem;
+            background-color: #fff;
+            color: #2575fc;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+        .start-btn:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.1);
+        }
+
+        .hero-content p {
+            margin-top: 15px;
+            font-size: 1.2rem;
+        }
+
+        .quote-box {
+            margin-top: 20px;
+            font-style: italic;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* DASHBOARD */
+        .dashboard {
+            display: none; /* hidden initially */
+            margin: 20px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .card input, .card textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .card button {
+            padding: 8px 15px;
+            background-color: #2575fc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background-color: #1a52c0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">EduBuddy</div>
+        <ul class="nav-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Notes</a></li>
+            <li><a href="#">Routine</a></li>
+            <li><a href="#">Resume</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="images/study-graphic.png" alt="Study Graphic" class="hero-image">
+            <h1>Welcome to EduBuddy!</h1>
+            <button class="start-btn" onclick="startDashboard()">Start</button>
+            <p>Your all-in-one student dashboard</p>
+            <div class="quote-box" id="quoteBox"></div>
+        </div>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section class="dashboard">
+        <h1>Welcome, Student 👋</h1>
+        <p>Manage your studies in one place</p>
+
+        <div class="cards">
+            <!-- Daily Reminder -->
+            <div class="card">
+                <h3>📅 Daily Reminder</h3>
+                <p>Set study reminders</p>
+                <input type="text" id="subject" placeholder="Enter subject">
+                <input type="time" id="time">
+                <button onclick="setReminder()">Set Reminder</button>
+            </div>
+
+            <!-- Notes System -->
+            <div class="card">
+                <h3>📝 Notes</h3>
+                <p>Write and save your notes</p>
+                <textarea id="noteInput" placeholder="Type your note here..."></textarea>
+                <button onclick="saveNote()">Save Note</button>
+                <h4>Saved Notes:</h4>
+                <ul id="notesList"></ul>
+            </div>
+
+            <!-- Routine / Timetable -->
+            <div class="card">
+                <h3>⏰ Routine Manager</h3>
+                <p>Plan your daily schedule</p>
+                <input type="text" id="taskInput" placeholder="Enter task">
+                <input type="time" id="taskTime">
+                <button onclick="addTask()">Add Task</button>
+                <h4>Today's Tasks:</h4>
+                <ul id="taskList"></ul>
+            </div>
+
+            <!-- Study Chat Board -->
+            <div class="card">
+                <h3>💬 Study Chat</h3>
+                <p>Discuss exam preparation</p>
+                <input type="text" id="chatUser" placeholder="Your Name">
+                <input type="text" id="chatMessage" placeholder="Type your message">
+                <button onclick="sendMessage()">Send</button>
+                <h4>Messages:</h4>
+                <ul id="chatList"></ul>
+            </div>
+
+            <!-- Resume Builder -->
+            <div class="card">
+                <h3>📄 Resume Maker</h3>
+                <p>Fill in your details to generate a resume</p>
+                <input type="text" id="name" placeholder="Full Name">
+                <input type="text" id="email" placeholder="Email">
+                <input type="text" id="phone" placeholder="Phone Number">
+                <textarea id="education" placeholder="Education"></textarea>
+                <textarea id="skills" placeholder="Skills (comma separated)"></textarea>
+                <textarea id="experience" placeholder="Experience"></textarea>
+                <button onclick="generateResume()">Generate Resume</button>
+                <h4>Your Resume:</h4>
+                <div id="resumeOutput" class="resume"></div>
+            </div>
+
+            <!-- Summary Maker -->
+            <div class="card">
+                <h3>✂️ Summary Maker</h3>
+                <p>Summarize your notes</p>
+                <textarea id="summaryInput" placeholder="Paste or type your notes here..."></textarea>
+                <button onclick="generateSummary()">Generate Summary</button>
+                <h4>Summary:</h4>
+                <p id="summaryOutput"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript -->
+    <script>
+        // Show dashboard and scroll to it
+        function startDashboard() {
+            const dashboard = document.querySelector('.dashboard');
+            dashboard.style.display = 'block';
+            dashboard.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Random Quote
+        const quotes = [
+            "Believe you can and you're halfway there.",
+            "Don’t watch the clock; do what it does. Keep going.",
+            "Study hard, dream big.",
+            "Success is the sum of small efforts repeated daily.",
+            "Your future is created by what you do today, not tomorrow."
+        ];
+
+        document.getElementById("quoteBox").innerText =
+            quotes[Math.floor(Math.random() * quotes.length)];
+    </script>
+
+</body>
+</html>

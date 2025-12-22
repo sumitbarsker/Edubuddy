@@ -1,0 +1,337 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4a6cf7;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+/* DASHBOARD */
+.dashboard {
+    padding: 50px;
+    background: #f5f7fb;
+    min-height: 100vh;
+}
+
+.dashboard h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.dashboard p {
+    margin-bottom: 40px;
+    color: #666;
+}
+
+/* CARDS */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.card button {
+    padding: 10px 20px;
+    border: none;
+    background: #4a6cf7;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.card input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+#notesList {
+    list-style: none;
+    padding-left: 0;
+}
+
+#notesList li {
+    background: #f1f1f1;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#notesList li button {
+    background: red;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#taskList {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+#taskList li {
+    background: #e0f7fa;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#taskList li button {
+    background: red;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#taskList {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+#taskList li {
+    background: #e0f7fa;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#taskList li button {
+    background: red;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#summaryOutput {
+    background: #fff3e0;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+    min-height: 50px;
+}
+.resume {
+    background: #e8f0fe;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.resume h3 {
+    margin-bottom: 5px;
+}
+
+.resume p {
+    margin: 3px 0;
+}
+#chatList {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+}
+
+#chatList li {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+#chatList li:last-child {
+    border-bottom: none;
+}
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.hero-image {
+    max-width: 200px;
+    margin-bottom: 20px;
+}
+
+.start-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #2575fc;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.start-btn:hover {
+    background-color: #e0e0e0;
+}
+.hero {
+    position: relative;
+    text-align: center;
+    padding: 50px 20px;
+    color: white;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url('images/particles.png') repeat;
+    animation: moveParticles 20s linear infinite;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+@keyframes moveParticles {
+    0% { background-position: 0 0; }
+    100% { background-position: 1000px 0; }
+}
+
+.hero h1, .hero p, .hero button {
+    position: relative;
+    z-index: 1;
+}
+/* HERO SECTION */
+.hero {
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(-45deg, #6a11cb, #2575fc, #ff6a00, #ffb347);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: white;
+    border-radius: 10px;
+    margin: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-image {
+    max-width: 200px;
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Floating animation for image */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Animated gradient background */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Start Button */
+.start-btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #2575fc;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.start-btn:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.1);
+}
+
+/* Quote Box */
+.quote-box {
+    margin-top: 20px;
+    font-style: italic;
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+
