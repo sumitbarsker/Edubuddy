@@ -10,7 +10,7 @@ function setReminder() {
     const now = new Date();
     const reminderTime = new Date();
 
-    const [hours, minutes] = time.split(":");
+    const [hours, minutes] = time.split(":"); 
     reminderTime.setHours(hours, minutes, 0, 0);
 
     const delay = reminderTime - now;
