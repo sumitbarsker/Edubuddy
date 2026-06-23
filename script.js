@@ -7,7 +7,7 @@ function setReminder() {
         return;
     }
 
-    const now = new Date();
+    const now = new Date(); 
     const reminderTime = new Date();
 
     const [hours, minutes] = time.split(":"); 
