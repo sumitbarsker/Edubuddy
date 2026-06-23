@@ -7,7 +7,7 @@ EduBuddy is a web-based student dashboard made to help students manage their dai
 - Daily routine tracking
 - Reminder system
 - Study planning
-- Easy-to-use dashboard
+- Easy-to-use dashboard 
 
 ## Technologies Used
 - HTML
