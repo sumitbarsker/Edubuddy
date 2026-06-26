@@ -3,7 +3,7 @@ function setReminder() {
     const time = document.getElementById("time").value;
 
     if (!subject || !time) {
-        alert("Please enter subject and time"); 
+        alert("Please enter subject and time");    
         return;
     }
  
