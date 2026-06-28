@@ -6,7 +6,7 @@ function setReminder() {
         alert("Please enter subject and time");    
         return;
     }
- 
+  
     const now = new Date(); 
     const reminderTime = new Date();
 
