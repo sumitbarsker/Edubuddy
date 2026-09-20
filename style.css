@@ -1,1 +1,783 @@
+/* =========================================================
+   EDUBUDDY PROFESSIONAL UI
+   ========================================================= */
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background: #f4f7fb;
+    color: #172033;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    height: 72px;
+    padding: 0 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid #e5e9f2;
+
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    list-style: none;
+}
+
+.nav-links a {
+    display: block;
+
+    padding: 10px 15px;
+
+    color: #64748b;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    border-radius: 10px;
+
+    transition: all 0.25s ease;
+}
+
+.nav-links a:hover {
+    color: #2563eb;
+    background: #eff4ff;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    position: relative;
+
+    width: calc(100% - 60px);
+    max-width: 1550px;
+
+    min-height: 390px;
+
+    margin: 30px auto 40px;
+
+    padding: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    border-radius: 28px;
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(255,255,255,0.18),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(168,85,247,0.30),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #4f46e5 55%,
+            #7c3aed
+        );
+
+    box-shadow:
+        0 25px 60px rgba(37, 99, 235, 0.22);
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    top: -140px;
+    left: -80px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.08);
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    right: -150px;
+    bottom: -190px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.08);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 750px;
+}
+
+.hero-image {
+    max-width: 150px;
+
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    color: white;
+
+    font-size: clamp(34px, 4vw, 52px);
+
+    font-weight: 800;
+
+    letter-spacing: -1.5px;
+
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: rgba(255,255,255,0.9);
+
+    font-size: 18px;
+}
+
+.start-btn {
+    margin-top: 25px;
+
+    padding: 13px 30px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: white;
+
+    color: #2563eb;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.15);
+
+    transition: all 0.25s ease;
+}
+
+.start-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 30px rgba(0,0,0,0.2);
+}
+
+.quote-box {
+    margin-top: 20px;
+
+    color: rgba(255,255,255,0.9);
+
+    font-size: 14px;
+
+    font-style: italic;
+}
+
+
+/* =================================================
+   DASHBOARD
+================================================= */
+
+.dashboard {
+    width: calc(100% - 60px);
+    max-width: 1550px;
+
+    margin: 0 auto 70px;
+}
+
+.dashboard > h2 {
+    margin-bottom: 6px;
+
+    color: #111827;
+
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.dashboard > p {
+    margin-bottom: 28px;
+
+    color: #6b7280;
+
+    font-size: 15px;
+}
+
+
+/* =================================================
+   THIS IS THE IMPORTANT FIX
+   GRID GOES ON .cards
+================================================= */
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 22px;
+
+    align-items: stretch;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.card {
+    position: relative;
+
+    min-width: 0;
+
+    padding: 25px;
+
+    min-height: 320px;
+
+    background: #ffffff;
+
+    border: 1px solid #e7eaf0;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 25px rgba(20,30,60,0.06);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    opacity: 0;
+
+    transition: opacity 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+
+    border-color: #d7def0;
+
+    box-shadow:
+        0 18px 40px rgba(20,30,60,0.11);
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+
+/* =========================
+   CARD TEXT
+========================= */
+
+.card h3 {
+    margin-bottom: 8px;
+
+    color: #172033;
+
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.card p {
+    margin-bottom: 18px;
+
+    color: #6b7280;
+
+    font-size: 14px;
+}
+
+.card h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+    color: #374151;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+input,
+textarea,
+select {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    margin-bottom: 12px;
+
+    border: 1px solid #dfe4ec;
+
+    border-radius: 10px;
+
+    background: #f9fafc;
+
+    color: #172033;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: all 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    background: #ffffff;
+
+    border-color: #4f46e5;
+
+    box-shadow:
+        0 0 0 4px rgba(79,70,229,0.10);
+}
+
+textarea {
+    min-height: 85px;
+
+    resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #9aa3b2;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.card button {
+    padding: 11px 17px;
+
+    border: none;
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #4f46e5
+        );
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 16px rgba(37,99,235,0.20);
+
+    transition: all 0.2s ease;
+}
+
+.card button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 22px rgba(37,99,235,0.28);
+}
+
+
+/* =========================
+   NOTES / TASKS / CHAT
+========================= */
+
+#notesList,
+#taskList,
+#chatList {
+    list-style: none;
+
+    margin-top: 12px;
+
+    max-height: 190px;
+
+    overflow-y: auto;
+}
+
+#notesList li,
+#taskList li,
+#chatList li {
+    padding: 10px 12px;
+
+    margin-bottom: 8px;
+
+    background: #f7f8fc;
+
+    border: 1px solid #e8ebf2;
+
+    border-radius: 9px;
+
+    color: #374151;
+
+    font-size: 13px;
+}
+
+#notesList button,
+#taskList button {
+    float: right;
+
+    padding: 5px 9px;
+
+    background: #fee2e2;
+
+    color: #dc2626;
+
+    font-size: 11px;
+
+    box-shadow: none;
+}
+
+#notesList button:hover,
+#taskList button:hover {
+    background: #fecaca;
+
+    color: #b91c1c;
+}
+
+
+/* =========================
+   AI CARD
+========================= */
+
+.ai-card {
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f7f4ff
+        );
+
+    border: 1px solid #ddd6fe;
+
+    box-shadow:
+        0 12px 35px rgba(124,58,237,0.10);
+}
+
+.ai-card::before {
+    opacity: 1;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7c3aed,
+            #2563eb,
+            #06b6d4
+        );
+}
+
+.ai-card h3 {
+    color: #6d28d9;
+}
+
+
+/* =========================
+   AI RESULT
+========================= */
+
+.ai-result {
+    margin-top: 18px;
+
+    padding: 18px;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef2ff,
+            #f5f3ff
+        );
+
+    border: 1px solid #ddd6fe;
+
+    animation: fadeIn 0.3s ease;
+}
+
+.ai-result h4 {
+    margin: 0 0 10px;
+
+    color: #5b21b6;
+
+    font-size: 16px;
+}
+
+.ai-result p {
+    margin: 5px 0;
+
+    color: #374151;
+
+    font-size: 13px;
+}
+
+.ai-history-item {
+    margin-top: 10px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    background: #f8f7ff;
+
+    border: 1px solid #e5e1ff;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   RESUME
+========================= */
+
+#resumeOutput {
+    margin-top: 15px;
+
+    padding: 18px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 12px;
+}
+
+#resumeOutput h3 {
+    margin-bottom: 10px;
+
+    color: #1e3a8a;
+
+    font-size: 22px;
+}
+
+#resumeOutput p {
+    margin: 7px 0;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+#summaryOutput {
+    margin-top: 15px;
+
+    min-height: 80px;
+
+    padding: 15px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 12px;
+
+    color: #374151;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+
+    .cards {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 750px) {
+
+    .navbar {
+        height: auto;
+
+        padding: 16px 20px;
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .hero {
+        width: calc(100% - 30px);
+
+        min-height: 330px;
+
+        padding: 35px 20px;
+
+        border-radius: 20px;
+    }
+
+    .dashboard {
+        width: calc(100% - 30px);
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard > h2 {
+        font-size: 25px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .navbar a {
+        padding: 8px 10px;
+
+        font-size: 13px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+}
