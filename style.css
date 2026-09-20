@@ -1,13 +1,22 @@
-/* =========================================================
-   EDUBUDDY PROFESSIONAL UI
-   ========================================================= */
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-
-/* =========================
-   GLOBAL
-========================= */
+:root {
+    --bg: #f5f7fb;
+    --surface: #ffffff;
+    --surface-soft: #f8faff;
+    --text: #172033;
+    --muted: #718096;
+    --border: #e7ebf3;
+    --primary: #4f46e5;
+    --primary-dark: #3730a3;
+    --blue: #2563eb;
+    --purple: #7c3aed;
+    --cyan: #06b6d4;
+    --green: #10b981;
+    --shadow-sm: 0 5px 18px rgba(15, 23, 42, 0.05);
+    --shadow: 0 15px 40px rgba(15, 23, 42, 0.08);
+    --radius: 18px;
+}
 
 * {
     margin: 0;
@@ -21,11 +30,12 @@ html {
 
 body {
     font-family: "Inter", sans-serif;
-    background: #f4f7fb;
-    color: #172033;
+    background:
+        radial-gradient(circle at 0% 0%, rgba(79, 70, 229, 0.05), transparent 25%),
+        var(--bg);
+    color: var(--text);
     line-height: 1.6;
 }
-
 
 /* =========================
    NAVBAR
@@ -36,28 +46,29 @@ body {
     top: 0;
     z-index: 1000;
 
-    height: 72px;
-    padding: 0 42px;
+    height: 76px;
+    padding: 0 6%;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    background: rgba(255, 255, 255, 0.94);
-    backdrop-filter: blur(18px);
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 
-    border-bottom: 1px solid #e5e9f2;
-
-    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
 }
 
 .logo {
     font-size: 25px;
     font-weight: 800;
+    letter-spacing: -0.7px;
 
     background: linear-gradient(
         135deg,
         #2563eb,
+        #4f46e5,
         #7c3aed
     );
 
@@ -68,18 +79,17 @@ body {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 8px;
-
+    gap: 6px;
     list-style: none;
 }
 
 .nav-links a {
-    display: block;
+    position: relative;
 
-    padding: 10px 15px;
+    display: block;
+    padding: 9px 15px;
 
     color: #64748b;
-
     text-decoration: none;
 
     font-size: 14px;
@@ -91,10 +101,34 @@ body {
 }
 
 .nav-links a:hover {
-    color: #2563eb;
-    background: #eff4ff;
+    color: var(--primary);
+    background: #eef2ff;
 }
 
+.nav-links a::after {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+    bottom: 3px;
+
+    width: 0;
+    height: 2px;
+
+    transform: translateX(-50%);
+
+    background: linear-gradient(
+        90deg,
+        var(--blue),
+        var(--purple)
+    );
+
+    transition: width 0.25s ease;
+}
+
+.nav-links a:hover::after {
+    width: 55%;
+}
 
 /* =========================
    HERO
@@ -103,14 +137,12 @@ body {
 .hero {
     position: relative;
 
-    width: calc(100% - 60px);
-    max-width: 1550px;
-
+    width: calc(100% - 80px);
+    max-width: 1500px;
     min-height: 390px;
 
-    margin: 30px auto 40px;
-
-    padding: 50px;
+    margin: 34px auto 45px;
+    padding: 60px 40px;
 
     display: flex;
     justify-content: center;
@@ -120,28 +152,28 @@ body {
 
     overflow: hidden;
 
-    border-radius: 28px;
+    border-radius: 30px;
 
     background:
         radial-gradient(
-            circle at 10% 20%,
-            rgba(255,255,255,0.18),
-            transparent 28%
+            circle at 15% 20%,
+            rgba(255, 255, 255, 0.18),
+            transparent 25%
         ),
         radial-gradient(
-            circle at 90% 80%,
-            rgba(168,85,247,0.30),
+            circle at 85% 80%,
+            rgba(168, 85, 247, 0.35),
             transparent 30%
         ),
         linear-gradient(
             135deg,
-            #2563eb,
-            #4f46e5 55%,
-            #7c3aed
+            #1d4ed8 0%,
+            #4f46e5 48%,
+            #7c3aed 100%
         );
 
     box-shadow:
-        0 25px 60px rgba(37, 99, 235, 0.22);
+        0 25px 65px rgba(79, 70, 229, 0.25);
 }
 
 .hero::before {
@@ -149,15 +181,15 @@ body {
 
     position: absolute;
 
-    width: 280px;
-    height: 280px;
+    width: 380px;
+    height: 380px;
 
-    top: -140px;
-    left: -80px;
+    left: -170px;
+    top: -200px;
 
     border-radius: 50%;
 
-    background: rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.07);
 }
 
 .hero::after {
@@ -165,122 +197,122 @@ body {
 
     position: absolute;
 
-    width: 350px;
-    height: 350px;
+    width: 450px;
+    height: 450px;
 
-    right: -150px;
-    bottom: -190px;
+    right: -220px;
+    bottom: -270px;
 
     border-radius: 50%;
 
-    background: rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
 
-    max-width: 750px;
+    max-width: 800px;
 }
 
 .hero-image {
-    max-width: 150px;
+    width: 135px;
+    max-width: 100%;
 
-    margin-bottom: 15px;
+    margin-bottom: 18px;
+
+    filter: drop-shadow(
+        0 15px 25px rgba(0, 0, 0, 0.15)
+    );
 }
 
 .hero h1 {
+    margin-bottom: 10px;
+
     color: white;
 
-    font-size: clamp(34px, 4vw, 52px);
-
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.1;
     font-weight: 800;
 
-    letter-spacing: -1.5px;
-
-    margin-bottom: 10px;
+    letter-spacing: -2px;
 }
 
 .hero p {
-    color: rgba(255,255,255,0.9);
+    color: rgba(255, 255, 255, 0.88);
 
-    font-size: 18px;
+    font-size: 17px;
 }
 
 .start-btn {
-    margin-top: 25px;
+    margin-top: 28px;
 
-    padding: 13px 30px;
+    padding: 13px 28px;
 
     border: none;
     border-radius: 12px;
 
     background: white;
+    color: var(--primary);
 
-    color: #2563eb;
-
-    font-size: 15px;
+    font-family: inherit;
+    font-size: 14px;
     font-weight: 700;
 
     cursor: pointer;
 
     box-shadow:
-        0 10px 25px rgba(0,0,0,0.15);
+        0 12px 30px rgba(0, 0, 0, 0.18);
 
     transition: all 0.25s ease;
 }
 
 .start-btn:hover {
-    transform: translateY(-3px);
+    transform: translateY(-3px) scale(1.02);
 
     box-shadow:
-        0 15px 30px rgba(0,0,0,0.2);
+        0 18px 35px rgba(0, 0, 0, 0.22);
 }
 
 .quote-box {
     margin-top: 20px;
 
-    color: rgba(255,255,255,0.9);
+    color: rgba(255, 255, 255, 0.9);
 
-    font-size: 14px;
-
+    font-size: 13px;
     font-style: italic;
 }
 
-
-/* =================================================
-   DASHBOARD
-================================================= */
+/* =========================
+   DASHBOARD HEADER
+========================= */
 
 .dashboard {
-    width: calc(100% - 60px);
-    max-width: 1550px;
+    width: calc(100% - 80px);
+    max-width: 1500px;
 
-    margin: 0 auto 70px;
+    margin: 0 auto 80px;
 }
 
 .dashboard > h2 {
-    margin-bottom: 6px;
-
-    color: #111827;
+    margin-bottom: 5px;
 
     font-size: 30px;
     font-weight: 800;
+
+    letter-spacing: -0.7px;
 }
 
 .dashboard > p {
-    margin-bottom: 28px;
+    margin-bottom: 30px;
 
-    color: #6b7280;
-
+    color: var(--muted);
     font-size: 15px;
 }
 
-
-/* =================================================
-   THIS IS THE IMPORTANT FIX
-   GRID GOES ON .cards
-================================================= */
+/* =========================
+   CARD GRID
+========================= */
 
 .cards {
     display: grid;
@@ -288,11 +320,10 @@ body {
     grid-template-columns:
         repeat(3, minmax(0, 1fr));
 
-    gap: 22px;
+    gap: 24px;
 
     align-items: stretch;
 }
-
 
 /* =========================
    CARDS
@@ -302,19 +333,21 @@ body {
     position: relative;
 
     min-width: 0;
+    min-height: 340px;
 
-    padding: 25px;
+    padding: 26px;
 
-    min-height: 320px;
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #fbfcff
+        );
 
-    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
 
-    border: 1px solid #e7eaf0;
-
-    border-radius: 20px;
-
-    box-shadow:
-        0 8px 25px rgba(20,30,60,0.06);
+    box-shadow: var(--shadow-sm);
 
     overflow: hidden;
 
@@ -338,8 +371,8 @@ body {
     background:
         linear-gradient(
             90deg,
-            #2563eb,
-            #7c3aed
+            var(--blue),
+            var(--purple)
         );
 
     opacity: 0;
@@ -348,52 +381,38 @@ body {
 }
 
 .card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-7px);
 
-    border-color: #d7def0;
+    border-color: #dbe2f0;
 
-    box-shadow:
-        0 18px 40px rgba(20,30,60,0.11);
+    box-shadow: var(--shadow);
 }
 
 .card:hover::before {
     opacity: 1;
 }
 
-
-/* =========================
-   CARD TEXT
-========================= */
-
 .card h3 {
-    margin-bottom: 8px;
+    margin-bottom: 7px;
 
-    color: #172033;
+    color: #182236;
 
-    font-size: 19px;
+    font-size: 18px;
     font-weight: 700;
+
+    letter-spacing: -0.2px;
 }
 
 .card p {
-    margin-bottom: 18px;
+    margin-bottom: 19px;
 
-    color: #6b7280;
+    color: var(--muted);
 
-    font-size: 14px;
+    font-size: 13px;
 }
-
-.card h4 {
-    margin-top: 20px;
-    margin-bottom: 10px;
-
-    color: #374151;
-
-    font-size: 14px;
-}
-
 
 /* =========================
-   INPUTS
+   FORM ELEMENTS
 ========================= */
 
 input,
@@ -401,49 +420,52 @@ textarea,
 select {
     width: 100%;
 
+    margin-bottom: 12px;
     padding: 12px 14px;
 
-    margin-bottom: 12px;
+    background: #f8fafc;
 
-    border: 1px solid #dfe4ec;
+    border: 1px solid #e2e8f0;
+    border-radius: 11px;
 
-    border-radius: 10px;
-
-    background: #f9fafc;
-
-    color: #172033;
+    color: var(--text);
 
     font-family: inherit;
-
-    font-size: 14px;
+    font-size: 13px;
 
     outline: none;
 
-    transition: all 0.2s ease;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+input:hover,
+textarea:hover {
+    border-color: #cbd5e1;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
-    background: #ffffff;
+    background: white;
 
-    border-color: #4f46e5;
+    border-color: var(--primary);
 
     box-shadow:
-        0 0 0 4px rgba(79,70,229,0.10);
+        0 0 0 4px rgba(79, 70, 229, 0.09);
 }
 
 textarea {
-    min-height: 85px;
-
+    min-height: 88px;
     resize: vertical;
 }
 
 input::placeholder,
 textarea::placeholder {
-    color: #9aa3b2;
+    color: #a0aec0;
 }
-
 
 /* =========================
    BUTTONS
@@ -465,38 +487,50 @@ textarea::placeholder {
     color: white;
 
     font-family: inherit;
-
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 700;
 
     cursor: pointer;
 
     box-shadow:
-        0 6px 16px rgba(37,99,235,0.20);
+        0 7px 17px rgba(37, 99, 235, 0.18);
 
-    transition: all 0.2s ease;
+    transition: all 0.22s ease;
 }
 
 .card button:hover {
     transform: translateY(-2px);
 
     box-shadow:
-        0 10px 22px rgba(37,99,235,0.28);
+        0 11px 24px rgba(37, 99, 235, 0.25);
 }
 
+.card button:active {
+    transform: translateY(0);
+}
 
 /* =========================
-   NOTES / TASKS / CHAT
+   LISTS
 ========================= */
+
+.card h4 {
+    margin-top: 21px;
+    margin-bottom: 10px;
+
+    color: #374151;
+
+    font-size: 13px;
+    font-weight: 700;
+}
 
 #notesList,
 #taskList,
 #chatList {
     list-style: none;
 
-    margin-top: 12px;
+    max-height: 185px;
 
-    max-height: 190px;
+    margin-top: 10px;
 
     overflow-y: auto;
 }
@@ -504,32 +538,31 @@ textarea::placeholder {
 #notesList li,
 #taskList li,
 #chatList li {
-    padding: 10px 12px;
+    position: relative;
 
     margin-bottom: 8px;
+    padding: 11px 12px;
 
-    background: #f7f8fc;
+    background: #f8fafc;
 
-    border: 1px solid #e8ebf2;
+    border: 1px solid #e8edf4;
+    border-radius: 10px;
 
-    border-radius: 9px;
+    color: #475569;
 
-    color: #374151;
-
-    font-size: 13px;
+    font-size: 12px;
 }
 
 #notesList button,
 #taskList button {
     float: right;
 
-    padding: 5px 9px;
+    padding: 5px 8px;
 
     background: #fee2e2;
-
     color: #dc2626;
 
-    font-size: 11px;
+    font-size: 10px;
 
     box-shadow: none;
 }
@@ -539,8 +572,9 @@ textarea::placeholder {
     background: #fecaca;
 
     color: #b91c1c;
-}
 
+    box-shadow: none;
+}
 
 /* =========================
    AI CARD
@@ -548,16 +582,21 @@ textarea::placeholder {
 
 .ai-card {
     background:
+        radial-gradient(
+            circle at 90% 0%,
+            rgba(124, 58, 237, 0.13),
+            transparent 35%
+        ),
         linear-gradient(
             145deg,
             #ffffff,
-            #f7f4ff
+            #f7f5ff
         );
 
-    border: 1px solid #ddd6fe;
+    border-color: #ddd6fe;
 
     box-shadow:
-        0 12px 35px rgba(124,58,237,0.10);
+        0 15px 40px rgba(124, 58, 237, 0.10);
 }
 
 .ai-card::before {
@@ -567,7 +606,7 @@ textarea::placeholder {
         linear-gradient(
             90deg,
             #7c3aed,
-            #2563eb,
+            #4f46e5,
             #06b6d4
         );
 }
@@ -576,17 +615,12 @@ textarea::placeholder {
     color: #6d28d9;
 }
 
-
-/* =========================
-   AI RESULT
-========================= */
+/* AI result */
 
 .ai-result {
     margin-top: 18px;
 
     padding: 18px;
-
-    border-radius: 14px;
 
     background:
         linear-gradient(
@@ -596,6 +630,7 @@ textarea::placeholder {
         );
 
     border: 1px solid #ddd6fe;
+    border-radius: 14px;
 
     animation: fadeIn 0.3s ease;
 }
@@ -604,32 +639,27 @@ textarea::placeholder {
     margin: 0 0 10px;
 
     color: #5b21b6;
-
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .ai-result p {
     margin: 5px 0;
 
     color: #374151;
-
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .ai-history-item {
-    margin-top: 10px;
-
+    margin-top: 9px;
     padding: 12px;
 
+    background: #faf9ff;
+
+    border: 1px solid #e7e2ff;
     border-radius: 10px;
 
-    background: #f8f7ff;
-
-    border: 1px solid #e5e1ff;
-
-    font-size: 13px;
+    font-size: 12px;
 }
-
 
 /* =========================
    RESUME
@@ -637,14 +667,12 @@ textarea::placeholder {
 
 #resumeOutput {
     margin-top: 15px;
-
-    padding: 18px;
+    padding: 20px;
 
     background: #f8fafc;
 
     border: 1px solid #e5e7eb;
-
-    border-radius: 12px;
+    border-radius: 13px;
 }
 
 #resumeOutput h3 {
@@ -652,64 +680,75 @@ textarea::placeholder {
 
     color: #1e3a8a;
 
-    font-size: 22px;
+    font-size: 21px;
 }
 
 #resumeOutput p {
-    margin: 7px 0;
+    margin: 6px 0;
 
-    font-size: 13px;
+    color: #475569;
+
+    font-size: 12px;
 }
-
 
 /* =========================
    SUMMARY
 ========================= */
 
 #summaryOutput {
-    margin-top: 15px;
-
     min-height: 80px;
 
+    margin-top: 15px;
     padding: 15px;
 
     background: #f8fafc;
 
     border: 1px solid #e5e7eb;
-
     border-radius: 12px;
 
-    color: #374151;
+    color: #475569;
 
-    font-size: 14px;
+    font-size: 13px;
 }
 
+/* =========================
+   SCROLLBAR
+========================= */
+
+#notesList::-webkit-scrollbar,
+#taskList::-webkit-scrollbar,
+#chatList::-webkit-scrollbar {
+    width: 5px;
+}
+
+#notesList::-webkit-scrollbar-thumb,
+#taskList::-webkit-scrollbar-thumb,
+#chatList::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
 
 /* =========================
    ANIMATION
 ========================= */
 
 @keyframes fadeIn {
-
     from {
         opacity: 0;
-
         transform: translateY(8px);
     }
 
     to {
         opacity: 1;
-
         transform: translateY(0);
     }
 }
 
-
 /* =========================
-   RESPONSIVE
+   TABLET
 ========================= */
 
-@media (max-width: 1100px) {
+@media (max-width: 1150px) {
 
     .cards {
         grid-template-columns:
@@ -718,32 +757,36 @@ textarea::placeholder {
 
 }
 
-@media (max-width: 750px) {
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 760px) {
 
     .navbar {
         height: auto;
 
-        padding: 16px 20px;
+        padding: 15px 20px;
 
         flex-direction: column;
-
-        gap: 12px;
+        gap: 10px;
     }
 
     .nav-links {
         flex-wrap: wrap;
-
         justify-content: center;
     }
 
     .hero {
         width: calc(100% - 30px);
 
-        min-height: 330px;
+        min-height: 350px;
 
-        padding: 35px 20px;
+        margin-top: 20px;
 
-        border-radius: 20px;
+        padding: 40px 20px;
+
+        border-radius: 22px;
     }
 
     .dashboard {
@@ -755,29 +798,37 @@ textarea::placeholder {
     }
 
     .dashboard > h2 {
-        font-size: 25px;
+        font-size: 26px;
     }
 
 }
+
+/* =========================
+   SMALL MOBILE
+========================= */
 
 @media (max-width: 480px) {
 
     .hero h1 {
         font-size: 32px;
+        letter-spacing: -1px;
     }
 
     .hero p {
-        font-size: 15px;
+        font-size: 14px;
     }
 
-    .navbar a {
-        padding: 8px 10px;
+    .hero-image {
+        width: 105px;
+    }
 
-        font-size: 13px;
+    .nav-links a {
+        padding: 8px 10px;
+        font-size: 12px;
     }
 
     .card {
-        padding: 20px;
+        padding: 21px;
     }
 
 }
