@@ -1,1 +1,1421 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="EduBuddy - Smart student productivity and study management app">
+
+    <title>EduBuddy | Student Productivity App</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css?v=3">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         WELCOME SCREEN
+    ====================================================== -->
+
+    <section id="welcomeScreen" class="welcome-screen">
+
+        <div class="welcome-background"></div>
+
+        <div class="welcome-content">
+
+            <div class="welcome-logo">
+                <span>Edu</span>Buddy
+            </div>
+
+            <div class="welcome-icon">
+                🎓
+            </div>
+
+            <p class="welcome-small">
+                YOUR PERSONAL STUDY COMPANION
+            </p>
+
+            <h1>
+                Welcome to <span>EduBuddy</span>
+            </h1>
+
+            <p class="welcome-description">
+                Organize your studies, manage your routine,
+                create notes and get AI-powered study guidance
+                — all in one place.
+            </p>
+
+            <button class="get-started-btn" onclick="startDashboard()">
+                Get Started
+                <span>→</span>
+            </button>
+
+            <div class="welcome-features">
+
+                <div>
+                    <span>📝</span>
+                    <p>Notes</p>
+                </div>
+
+                <div>
+                    <span>⏰</span>
+                    <p>Routine</p>
+                </div>
+
+                <div>
+                    <span>🤖</span>
+                    <p>AI Study</p>
+                </div>
+
+                <div>
+                    <span>📄</span>
+                    <p>Resume</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         APP
+    ====================================================== -->
+
+    <div id="app" class="app-container hidden">
+
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-top">
+
+                <div class="app-logo">
+                    <div class="logo-mark">E</div>
+
+                    <div>
+                        <strong>EduBuddy</strong>
+                        <small>Student App</small>
+                    </div>
+                </div>
+
+
+                <nav class="sidebar-nav">
+
+                    <p class="nav-title">
+                        MAIN
+                    </p>
+
+                    <button
+                        class="nav-item active"
+                        data-page="dashboardPage"
+                        onclick="showPage('dashboardPage', this)">
+
+                        <span class="nav-icon">🏠</span>
+                        <span>Dashboard</span>
+
+                    </button>
+
+
+                    <p class="nav-title">
+                        STUDY
+                    </p>
+
+                    <button
+                        class="nav-item"
+                        data-page="notesPage"
+                        onclick="showPage('notesPage', this)">
+
+                        <span class="nav-icon">📝</span>
+                        <span>Notes</span>
+
+                    </button>
+
+
+                    <button
+                        class="nav-item"
+                        data-page="routinePage"
+                        onclick="showPage('routinePage', this)">
+
+                        <span class="nav-icon">⏰</span>
+                        <span>Routine</span>
+
+                    </button>
+
+
+                    <button
+                        class="nav-item"
+                        data-page="chatPage"
+                        onclick="showPage('chatPage', this)">
+
+                        <span class="nav-icon">💬</span>
+                        <span>Study Chat</span>
+
+                    </button>
+
+
+                    <p class="nav-title">
+                        TOOLS
+                    </p>
+
+
+                    <button
+                        class="nav-item"
+                        data-page="aiPage"
+                        onclick="showPage('aiPage', this)">
+
+                        <span class="nav-icon">🤖</span>
+                        <span>AI Study Planner</span>
+
+                    </button>
+
+
+                    <button
+                        class="nav-item"
+                        data-page="resumePage"
+                        onclick="showPage('resumePage', this)">
+
+                        <span class="nav-icon">📄</span>
+                        <span>Resume Maker</span>
+
+                    </button>
+
+
+                    <button
+                        class="nav-item"
+                        data-page="summaryPage"
+                        onclick="showPage('summaryPage', this)">
+
+                        <span class="nav-icon">✂️</span>
+                        <span>Summary Maker</span>
+
+                    </button>
+
+                </nav>
+
+            </div>
+
+
+            <!-- SIDEBAR BOTTOM -->
+
+            <div class="sidebar-bottom">
+
+                <div class="student-mini-card">
+
+                    <div class="student-avatar">
+                        S
+                    </div>
+
+                    <div>
+                        <strong>Student</strong>
+                        <small>Keep learning 🚀</small>
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="logout-btn"
+                    onclick="goToWelcome()">
+
+                    ↩
+                    <span>Back to Home</span>
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =================================================
+             MAIN APP CONTENT
+        ================================================== -->
+
+        <main class="main-content">
+
+
+            <!-- TOP BAR -->
+
+            <header class="topbar">
+
+                <div>
+
+                    <p class="topbar-date">
+                        STUDENT PRODUCTIVITY
+                    </p>
+
+                    <h2 id="pageTitle">
+                        Dashboard
+                    </h2>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <div class="topbar-status">
+                        <span></span>
+                        All systems ready
+                    </div>
+
+                    <div class="profile-circle">
+                        S
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =================================================
+                 DASHBOARD PAGE
+            ================================================== -->
+
+            <section
+                id="dashboardPage"
+                class="app-page active-page">
+
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span class="heading-label">
+                            OVERVIEW
+                        </span>
+
+                        <h1>
+                            Welcome back, Student 👋
+                        </h1>
+
+                        <p>
+                            Manage your studies and stay productive
+                            from one place.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STATS -->
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon blue">
+                            📝
+                        </div>
+
+                        <div>
+                            <span>Saved Notes</span>
+                            <strong id="notesCount">0</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon purple">
+                            ⏰
+                        </div>
+
+                        <div>
+                            <span>Today's Tasks</span>
+                            <strong id="tasksCount">0</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon cyan">
+                            🤖
+                        </div>
+
+                        <div>
+                            <span>AI Plans</span>
+                            <strong id="aiPlansCount">0</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon green">
+                            🎯
+                        </div>
+
+                        <div>
+                            <span>Study Goal</span>
+                            <strong>100%</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DASHBOARD GRID -->
+
+                <div class="dashboard-grid">
+
+
+                    <!-- QUICK ACTIONS -->
+
+                    <div class="dashboard-panel quick-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <span class="panel-label">
+                                    QUICK ACTIONS
+                                </span>
+
+                                <h3>
+                                    What do you want to do?
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="quick-actions">
+
+                            <button
+                                onclick="showPage('notesPage')">
+
+                                <span>📝</span>
+
+                                <div>
+                                    <strong>Add Note</strong>
+                                    <small>Save study notes</small>
+                                </div>
+
+                            </button>
+
+
+                            <button
+                                onclick="showPage('routinePage')">
+
+                                <span>⏰</span>
+
+                                <div>
+                                    <strong>Plan Routine</strong>
+                                    <small>Manage your tasks</small>
+                                </div>
+
+                            </button>
+
+
+                            <button
+                                onclick="showPage('aiPage')">
+
+                                <span>🤖</span>
+
+                                <div>
+                                    <strong>Ask AI</strong>
+                                    <small>Get study guidance</small>
+                                </div>
+
+                            </button>
+
+
+                            <button
+                                onclick="showPage('resumePage')">
+
+                                <span>📄</span>
+
+                                <div>
+                                    <strong>Create Resume</strong>
+                                    <small>Build your resume</small>
+                                </div>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PRODUCTIVITY CARD -->
+
+                    <div class="dashboard-panel productivity-panel">
+
+                        <div class="productivity-circle">
+
+                            <div>
+                                <strong>100%</strong>
+                                <span>Ready</span>
+                            </div>
+
+                        </div>
+
+                        <div class="productivity-info">
+
+                            <span class="panel-label">
+                                PRODUCTIVITY
+                            </span>
+
+                            <h3>
+                                Keep going 🚀
+                            </h3>
+
+                            <p>
+                                Stay consistent with your
+                                daily study routine.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- AI FEATURE -->
+
+                <div class="featured-ai">
+
+                    <div class="ai-feature-content">
+
+                        <span class="featured-badge">
+                            ✨ SMART STUDY
+                        </span>
+
+                        <h2>
+                            Let AI help you plan your studies.
+                        </h2>
+
+                        <p>
+                            Enter your subject, difficulty and
+                            previous score to get a personalized
+                            study recommendation.
+                        </p>
+
+                        <button
+                            onclick="showPage('aiPage')">
+
+                            Open AI Study Planner →
+                        </button>
+
+                    </div>
+
+
+                    <div class="ai-big-icon">
+                        🤖
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 NOTES PAGE
+            ================================================== -->
+
+            <section
+                id="notesPage"
+                class="app-page">
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span class="heading-label">
+                            STUDY
+                        </span>
+
+                        <h1>
+                            My Notes 📝
+                        </h1>
+
+                        <p>
+                            Write and save important study notes.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature-layout">
+
+                    <div class="feature-card">
+
+                        <h3>
+                            Create a new note
+                        </h3>
+
+                        <p>
+                            Write anything you want to remember.
+                        </p>
+
+                        <textarea
+                            id="noteInput"
+                            placeholder="Start writing your note...">
+                        </textarea>
+
+                        <button
+                            class="primary-btn"
+                            onclick="saveNote()">
+
+                            Save Note
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <h3>
+                            Saved Notes
+                        </h3>
+
+                        <ul id="notesList"></ul>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 ROUTINE PAGE
+            ================================================== -->
+
+            <section
+                id="routinePage"
+                class="app-page">
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span class="heading-label">
+                            STUDY
+                        </span>
+
+                        <h1>
+                            My Routine ⏰
+                        </h1>
+
+                        <p>
+                            Organize your study schedule and reminders.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature-layout">
+
+
+                    <div class="feature-card">
+
+                        <h3>
+                            Add today's task
+                        </h3>
+
+                        <p>
+                            Plan what you need to study.
+                        </p>
+
+                        <input
+                            type="text"
+                            id="taskInput"
+                            placeholder="Enter task">
+
+
+                        <input
+                            type="time"
+                            id="taskTime">
+
+
+                        <button
+                            class="primary-btn"
+                            onclick="addTask()">
+
+                            Add Task
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <h3>
+                            Today's Tasks
+                        </h3>
+
+                        <ul id="taskList"></ul>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="reminder-box">
+
+                    <div>
+                        <span>🔔</span>
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Study Reminder
+                        </h3>
+
+                        <p>
+                            Set a reminder for a subject you
+                            want to study.
+                        </p>
+
+                    </div>
+
+                    <div class="reminder-form">
+
+                        <input
+                            type="text"
+                            id="subject"
+                            placeholder="Subject">
+
+                        <input
+                            type="time"
+                            id="time">
+
+                        <button
+                            class="primary-btn"
+                            onclick="setReminder()">
+
+                            Set Reminder
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 CHAT PAGE
+            ================================================== -->
+
+            <section
+                id="chatPage"
+                class="app-page">
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span class="heading-label">
+                            STUDY
+                        </span>
+
+                        <h1>
+                            Study Chat 💬
+                        </h1>
+
+                        <p>
+                            Discuss study topics and exam preparation.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chat-container">
+
+                    <div class="chat-header">
+
+                        <div class="chat-avatar">
+                            💬
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                EduBuddy Study Chat
+                            </strong>
+
+                            <small>
+                                Student discussion space
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="chatList"
+                        class="chat-messages">
+                    </div>
+
+
+                    <div class="chat-input-area">
+
+                        <input
+                            type="text"
+                            id="chatUser"
+                            placeholder="Your name">
+
+                        <input
+                            type="text"
+                            id="chatMessage"
+                            placeholder="Type your message...">
+
+                        <button
+                            class="primary-btn"
+                            onclick="sendMessage()">
+
+                            Send
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 AI PAGE
+            ================================================== -->
+
+            <section
+                id="aiPage"
+                class="app-page">
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span class="heading-label">
+                            SMART TOOLS
+                        </span>
+
+                        <h1>
+                            AI Study Planner 🤖
+                        </h1>
+
+                        <p>
+                            Get a personalized study recommendation.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="ai-layout">
+
+
+                    <div class="ai-input-card">
+
+                        <div class="ai-card-title">
+
+                            <div class="ai-icon">
+                                🤖
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Study Analysis
+                                </h3>
+
+                                <p>
+                                    Tell us about your study performance.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <label>
+                            Subject
+                        </label>
+
+                        <input
+                            type="text"
+                            id="aiSubject"
+                            placeholder="e.g. Machine Learning">
+
+
+                        <label>
+                            Difficulty
+                        </label>
+
+                        <input
+                            type="number"
+                            id="aiDifficulty"
+                            min="1"
+                            max="5"
+                            placeholder="1 - 5">
+
+
+                        <label>
+                            Previous Score
+                        </label>
+
+                        <input
+                            type="number"
+                            id="aiScore"
+                            min="0"
+                            max="100"
+                            placeholder="Percentage">
+
+
+                        <label>
+                            Available Study Hours
+                        </label>
+
+                        <input
+                            type="number"
+                            id="aiHours"
+                            min="1"
+                            max="12"
+                            placeholder="Hours">
+
+
+                        <button
+                            class="ai-primary-btn"
+                            onclick="generateAIRecommendation()">
+
+                            🤖 Generate Recommendation
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="ai-output-card">
+
+                        <div class="ai-output-header">
+
+                            <span>
+                                AI RESULT
+                            </span>
+
+                            <span>
+                                ✨
+                            </span>
+
+                        </div>
+
+
+                        <div id="aiRecommendation">
+
+                            <div class="empty-ai">
+
+                                <div>
+                                    🤖
+                                </div>
+
+                                <h3>
+                                    Your recommendation will appear here
+                                </h3>
+
+                                <p>
+                                    Fill in your study details
+                                    and generate your plan.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="history-card">
+
+                    <div class="history-header">
+
+                        <div>
+
+                            <span class="heading-label">
+                                HISTORY
+                            </span>
+
+                            <h3>
+                                Previous AI Plans
+                            </h3>
+
+                        </div>
+
+                        <button
+                            class="secondary-btn"
+                            onclick="showAIHistory()">
+
+                            View History
+
+                        </button>
+
+                    </div>
+
+                    <div id="aiHistory"></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 RESUME PAGE
+            ================================================== -->
+
+            <section
+                id="resumePage"
+                class="app-page">
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span class="heading-label">
+                            CAREER TOOL
+                        </span>
+
+                        <h1>
+                            Resume Maker 📄
+                        </h1>
+
+                        <p>
+                            Create a clean student resume.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="resume-layout">
+
+
+                    <div class="feature-card resume-form">
+
+                        <h3>
+                            Your Information
+                        </h3>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Full Name">
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Email">
+
+                        <input
+                            type="text"
+                            id="phone"
+                            placeholder="Phone Number">
+
+                        <textarea
+                            id="education"
+                            placeholder="Education">
+                        </textarea>
+
+                        <textarea
+                            id="skills"
+                            placeholder="Skills (comma separated)">
+                        </textarea>
+
+                        <textarea
+                            id="experience"
+                            placeholder="Experience / Projects">
+                        </textarea>
+
+                        <button
+                            class="primary-btn"
+                            onclick="generateResume()">
+
+                            Generate Resume
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <h3>
+                            Resume Preview
+                        </h3>
+
+                        <div
+                            id="resumeOutput"
+                            class="resume-preview">
+
+                            <div class="resume-empty">
+
+                                <span>📄</span>
+
+                                <p>
+                                    Your generated resume
+                                    will appear here.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 SUMMARY PAGE
+            ================================================== -->
+
+            <section
+                id="summaryPage"
+                class="app-page">
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span class="heading-label">
+                            STUDY TOOL
+                        </span>
+
+                        <h1>
+                            Summary Maker ✂️
+                        </h1>
+
+                        <p>
+                            Turn long study notes into quick summaries.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="summary-layout">
+
+                    <div class="feature-card">
+
+                        <h3>
+                            Your Study Notes
+                        </h3>
+
+                        <p>
+                            Paste your notes below.
+                        </p>
+
+                        <textarea
+                            id="summaryInput"
+                            class="large-textarea"
+                            placeholder="Paste your study material here...">
+                        </textarea>
+
+                        <button
+                            class="primary-btn"
+                            onclick="generateSummary()">
+
+                            Generate Summary
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <h3>
+                            Generated Summary
+                        </h3>
+
+                        <div id="summaryOutput">
+
+                            Your summary will appear here.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="script.js?v=3"></script>
+    <script src="ai.js?v=3"></script>
+
+
+    <script>
+
+        /* ============================================
+           START DASHBOARD
+        ============================================ */
+
+        function startDashboard() {
+
+            const welcome = document.getElementById("welcomeScreen");
+            const app = document.getElementById("app");
+
+            welcome.classList.add("welcome-hide");
+
+            setTimeout(() => {
+
+                welcome.style.display = "none";
+
+                app.classList.remove("hidden");
+
+                showPage("dashboardPage");
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            }, 450);
+
+        }
+
+
+        /* ============================================
+           SHOW PAGE
+        ============================================ */
+
+        function showPage(pageId, clickedButton = null) {
+
+            const pages =
+                document.querySelectorAll(".app-page");
+
+            pages.forEach(page => {
+
+                page.classList.remove("active-page");
+
+            });
+
+
+            const selectedPage =
+                document.getElementById(pageId);
+
+            if (selectedPage) {
+
+                selectedPage.classList.add("active-page");
+
+            }
+
+
+            /* Update sidebar */
+
+            const navItems =
+                document.querySelectorAll(".nav-item");
+
+            navItems.forEach(item => {
+
+                item.classList.remove("active");
+
+            });
+
+
+            if (clickedButton) {
+
+                clickedButton.classList.add("active");
+
+            } else {
+
+                const matchingButton =
+                    document.querySelector(
+                        `.nav-item[data-page="${pageId}"]`
+                    );
+
+                if (matchingButton) {
+
+                    matchingButton.classList.add("active");
+
+                }
+
+            }
+
+
+            /* Page title */
+
+            const titles = {
+
+                dashboardPage: "Dashboard",
+
+                notesPage: "My Notes",
+
+                routinePage: "My Routine",
+
+                chatPage: "Study Chat",
+
+                aiPage: "AI Study Planner",
+
+                resumePage: "Resume Maker",
+
+                summaryPage: "Summary Maker"
+
+            };
+
+
+            const title =
+                document.getElementById("pageTitle");
+
+            if (title) {
+
+                title.textContent =
+                    titles[pageId] || "EduBuddy";
+
+            }
+
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+
+            updateDashboardStats();
+
+        }
+
+
+        /* ============================================
+           BACK TO WELCOME
+        ============================================ */
+
+        function goToWelcome() {
+
+            const app =
+                document.getElementById("app");
+
+            const welcome =
+                document.getElementById("welcomeScreen");
+
+            app.classList.add("hidden");
+
+            welcome.style.display = "flex";
+
+            setTimeout(() => {
+
+                welcome.classList.remove("welcome-hide");
+
+            }, 20);
+
+        }
+
+
+        /* ============================================
+           DASHBOARD STATS
+        ============================================ */
+
+        function updateDashboardStats() {
+
+            const notesList =
+                document.getElementById("notesList");
+
+            const taskList =
+                document.getElementById("taskList");
+
+            const notesCount =
+                document.getElementById("notesCount");
+
+            const tasksCount =
+                document.getElementById("tasksCount");
+
+
+            if (notesList && notesCount) {
+
+                notesCount.textContent =
+                    notesList.children.length;
+
+            }
+
+
+            if (taskList && tasksCount) {
+
+                tasksCount.textContent =
+                    taskList.children.length;
+
+            }
+
+        }
+
+
+        /* ============================================
+           INITIAL STATE
+        ============================================ */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                const app =
+                    document.getElementById("app");
+
+                if (app) {
+
+                    app.classList.add("hidden");
+
+                }
+
+                updateDashboardStats();
+
+            }
+        );
+
+
+    </script>
+
+</body>
+
+</html>
