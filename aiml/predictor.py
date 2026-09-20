@@ -1,11 +1,28 @@
+import os
 import joblib
+
+
+# ==========================================
+# MODEL PATH
+# ==========================================
+
+MODEL_PATH = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    "study_model.pkl"
+)
 
 
 # ==========================================
 # LOAD TRAINED MODEL
 # ==========================================
 
-model = joblib.load("study_model.pkl")
+if not os.path.exists(MODEL_PATH):
+    raise FileNotFoundError(
+        f"Trained model not found: {MODEL_PATH}\n"
+        "Please run train_model.py first."
+    )
+
+model = joblib.load(MODEL_PATH)
 
 
 # ==========================================
