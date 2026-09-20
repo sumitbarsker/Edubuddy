@@ -2,11 +2,37 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import sqlite3
 from datetime import datetime
+import os
+import sys
 
 app = Flask(__name__)
 CORS(app)
 
-DATABASE = "edubuddy.db"
+# ==============================
+# PATHS
+# ==============================
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+DATABASE = os.path.join(
+    BASE_DIR,
+    "edubuddy.db"
+)
+
+# AIML folder path
+AIML_PATH = os.path.abspath(
+    os.path.join(BASE_DIR, "..", "aiml")
+)
+
+sys.path.append(AIML_PATH)
+
+# Import AI predictor
+try:
+    from predictor import predict_priority, recommended_hours
+    AI_AVAILABLE = True
+except Exception as e:
+    print("⚠️ AI model could not be loaded:", e)
+    AI_AVAILABLE = False
 
 
 # ==============================
@@ -14,14 +40,19 @@ DATABASE = "edubuddy.db"
 # ==============================
 
 def get_db():
+
     conn = sqlite3.connect(DATABASE)
+
     conn.row_factory = sqlite3.Row
+
     return conn
 
 
 def init_db():
+
     conn = get_db()
 
+    # NOTES
     conn.execute("""
         CREATE TABLE IF NOT EXISTS notes (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -30,6 +61,7 @@ def init_db():
         )
     """)
 
+    # TASKS
     conn.execute("""
         CREATE TABLE IF NOT EXISTS tasks (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -39,6 +71,7 @@ def init_db():
         )
     """)
 
+    # CHAT
     conn.execute("""
         CREATE TABLE IF NOT EXISTS chat (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -48,6 +81,7 @@ def init_db():
         )
     """)
 
+    # AI HISTORY
     conn.execute("""
         CREATE TABLE IF NOT EXISTS ai_history (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -62,6 +96,7 @@ def init_db():
     """)
 
     conn.commit()
+
     conn.close()
 
 
@@ -71,9 +106,11 @@ def init_db():
 
 @app.route("/")
 def home():
+
     return jsonify({
         "success": True,
-        "message": "EduBuddy Backend is running 🚀"
+        "message": "EduBuddy Backend is running 🚀",
+        "ai_model": "Available" if AI_AVAILABLE else "Unavailable"
     })
 
 
@@ -101,11 +138,12 @@ def get_notes():
 @app.route("/api/notes", methods=["POST"])
 def add_note():
 
-    data = request.get_json()
+    data = request.get_json() or {}
 
     note = data.get("note", "").strip()
 
     if not note:
+
         return jsonify({
             "success": False,
             "message": "Note cannot be empty"
@@ -118,7 +156,10 @@ def add_note():
         INSERT INTO notes (note, created_at)
         VALUES (?, ?)
         """,
-        (note, datetime.now().isoformat())
+        (
+            note,
+            datetime.now().isoformat()
+        )
     )
 
     conn.commit()
@@ -145,6 +186,7 @@ def delete_note(note_id):
     )
 
     conn.commit()
+
     conn.close()
 
     return jsonify({
@@ -177,12 +219,14 @@ def get_tasks():
 @app.route("/api/tasks", methods=["POST"])
 def add_task():
 
-    data = request.get_json()
+    data = request.get_json() or {}
 
     task = data.get("task", "").strip()
+
     time = data.get("time", "").strip()
 
     if not task or not time:
+
         return jsonify({
             "success": False,
             "message": "Task and time are required"
@@ -227,6 +271,7 @@ def delete_task(task_id):
     )
 
     conn.commit()
+
     conn.close()
 
     return jsonify({
@@ -262,12 +307,14 @@ def get_chat():
 @app.route("/api/chat", methods=["POST"])
 def send_message():
 
-    data = request.get_json()
+    data = request.get_json() or {}
 
     username = data.get("username", "").strip()
+
     message = data.get("message", "").strip()
 
     if not username or not message:
+
         return jsonify({
             "success": False,
             "message": "Username and message are required"
@@ -302,7 +349,127 @@ def send_message():
 
 
 # ==============================
-# AI HISTORY
+# AI PREDICTION
+# ==============================
+
+@app.route("/api/ai/predict", methods=["POST"])
+def ai_predict():
+
+    # Check whether model loaded
+    if not AI_AVAILABLE:
+
+        return jsonify({
+            "success": False,
+            "message": "AI model is not available. Please train the model first."
+        }), 500
+
+    data = request.get_json() or {}
+
+    # ==============================
+    # GET INPUT
+    # ==============================
+
+    try:
+
+        difficulty = int(
+            data.get("difficulty")
+        )
+
+        previous_score = float(
+            data.get("previous_score")
+        )
+
+        available_hours = float(
+            data.get("available_hours")
+        )
+
+    except (TypeError, ValueError):
+
+        return jsonify({
+            "success": False,
+            "message": "Invalid AI input"
+        }), 400
+
+
+    # ==============================
+    # VALIDATION
+    # ==============================
+
+    if difficulty < 1 or difficulty > 5:
+
+        return jsonify({
+            "success": False,
+            "message": "Difficulty must be between 1 and 5"
+        }), 400
+
+
+    if previous_score < 0 or previous_score > 100:
+
+        return jsonify({
+            "success": False,
+            "message": "Previous score must be between 0 and 100"
+        }), 400
+
+
+    if available_hours <= 0:
+
+        return jsonify({
+            "success": False,
+            "message": "Available hours must be greater than 0"
+        }), 400
+
+
+    # ==============================
+    # AI PREDICTION
+    # ==============================
+
+    try:
+
+        priority = predict_priority(
+            difficulty,
+            previous_score,
+            available_hours
+        )
+
+        study_hours = recommended_hours(
+            priority,
+            available_hours
+        )
+
+    except Exception as e:
+
+        return jsonify({
+            "success": False,
+            "message": "AI prediction failed",
+            "error": str(e)
+        }), 500
+
+
+    # ==============================
+    # RESPONSE
+    # ==============================
+
+    return jsonify({
+
+        "success": True,
+
+        "difficulty": difficulty,
+
+        "previous_score": previous_score,
+
+        "available_hours": available_hours,
+
+        "priority": priority,
+
+        "recommended_hours": study_hours,
+
+        "message": "AI prediction generated successfully"
+
+    })
+
+
+# ==============================
+# AI HISTORY - GET
 # ==============================
 
 @app.route("/api/ai/history", methods=["GET"])
@@ -326,10 +493,14 @@ def get_ai_history():
     ])
 
 
+# ==============================
+# AI HISTORY - SAVE
+# ==============================
+
 @app.route("/api/ai/history", methods=["POST"])
 def save_ai_history():
 
-    data = request.get_json()
+    data = request.get_json() or {}
 
     required = [
         "subject",
@@ -341,11 +512,14 @@ def save_ai_history():
     ]
 
     for field in required:
+
         if field not in data:
+
             return jsonify({
                 "success": False,
                 "message": f"{field} is required"
             }), 400
+
 
     conn = get_db()
 
@@ -394,6 +568,17 @@ def save_ai_history():
 if __name__ == "__main__":
 
     init_db()
+
+    print("")
+    print("===================================")
+    print("🚀 EduBuddy Backend Started")
+    print("📡 http://127.0.0.1:5000")
+    print(
+        "🤖 AI Model:",
+        "Available" if AI_AVAILABLE else "Unavailable"
+    )
+    print("===================================")
+    print("")
 
     app.run(
         host="0.0.0.0",
