@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>EduBuddy | Student Study Companion</title>
 
-    <link rel="stylesheet" href="style.css?v=4">
+    <!-- CSS -->
+    <link rel="stylesheet" href="./style.css?v=20260920">
 </head>
 
 <body>
@@ -15,33 +15,54 @@
     <!-- =====================================================
          WELCOME SCREEN
     ====================================================== -->
-
     <section id="welcomeScreen" class="welcome-screen">
 
         <div class="hero-grid"></div>
-        <div class="hero-orb hero-orb-one"></div>
-        <div class="hero-orb hero-orb-two"></div>
+
+        <div class="hero-orb orb-one"></div>
+        <div class="hero-orb orb-two"></div>
 
         <div class="welcome-content">
 
-            <!-- LOGO -->
+            <!-- BRAND -->
             <div class="brand-logo">
 
                 <div class="brand-icon">
-                    <svg viewBox="0 0 48 48" fill="none">
-                        <rect x="5" y="7" width="38" height="34" rx="10"
-                            stroke="currentColor" stroke-width="2.5" />
-
-                        <path d="M14 17.5C14 16.67 14.67 16 15.5 16H23V32H15.5C14.67 32 14 31.33 14 30.5V17.5Z"
-                            fill="currentColor" opacity=".25" />
-
-                        <path d="M34 17.5C34 16.67 33.33 16 32.5 16H25V32H32.5C33.33 32 34 31.33 34 30.5V17.5Z"
-                            fill="currentColor" opacity=".25" />
-
-                        <path d="M24 16V32"
+                    <svg
+                        viewBox="0 0 48 48"
+                        width="29"
+                        height="29"
+                        aria-hidden="true"
+                    >
+                        <rect
+                            x="5"
+                            y="7"
+                            width="38"
+                            height="34"
+                            rx="10"
+                            fill="none"
                             stroke="currentColor"
                             stroke-width="2.5"
-                            stroke-linecap="round" />
+                        />
+
+                        <path
+                            d="M14 17.5C14 16.67 14.67 16 15.5 16H23V32H15.5C14.67 32 14 31.33 14 30.5V17.5Z"
+                            fill="currentColor"
+                            opacity=".25"
+                        />
+
+                        <path
+                            d="M34 17.5C34 16.67 33.33 16 32.5 16H25V32H32.5C33.33 32 34 31.33 34 30.5V17.5Z"
+                            fill="currentColor"
+                            opacity=".25"
+                        />
+
+                        <path
+                            d="M24 16V32"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                        />
                     </svg>
                 </div>
 
@@ -52,73 +73,66 @@
             </div>
 
 
-            <!-- HERO BADGE -->
-
+            <!-- BADGE -->
             <div class="hero-badge">
-                <span class="badge-dot"></span>
+                <span></span>
                 Your personal study companion
             </div>
 
 
-            <!-- HERO HEADING -->
-
+            <!-- HERO TITLE -->
             <h1>
                 Study smarter.<br>
                 <span>Stay ahead.</span>
             </h1>
 
 
+            <!-- DESCRIPTION -->
             <p class="welcome-description">
                 Organize your studies, manage your routine, create notes
                 and get AI-powered study guidance — all in one place.
             </p>
 
 
-            <!-- BUTTON -->
+            <!-- GET STARTED -->
+            <button
+                class="get-started-btn"
+                onclick="startDashboard()"
+            >
 
-            <button class="get-started-btn" onclick="startDashboard()">
+                Get Started
 
-                <span>Get Started</span>
-
-                <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M5 12H19"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round" />
-
-                    <path d="M13 6L19 12L13 18"
+                <svg
+                    viewBox="0 0 24 24"
+                    width="20"
+                    height="20"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M5 12H19M13 6L19 12L13 18"
+                        fill="none"
                         stroke="currentColor"
                         stroke-width="2"
                         stroke-linecap="round"
-                        stroke-linejoin="round" />
+                        stroke-linejoin="round"
+                    />
                 </svg>
 
             </button>
 
 
-            <!-- FEATURE CARDS -->
-
+            <!-- FEATURES -->
             <div class="welcome-features">
 
                 <div class="welcome-feature">
 
-                    <div class="feature-icon blue-icon">
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M5 4H19V20H5V4Z"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linejoin="round" />
-
-                            <path d="M8 8H16M8 12H16M8 16H13"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round" />
-                        </svg>
+                    <div class="feature-icon blue">
+                        <span>▤</span>
                     </div>
 
                     <div>
                         <strong>Smart Notes</strong>
-                        <span>Keep your ideas organized</span>
+                        <small>Keep your ideas organized</small>
                     </div>
 
                 </div>
@@ -126,22 +140,13 @@
 
                 <div class="welcome-feature">
 
-                    <div class="feature-icon purple-icon">
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <circle cx="12" cy="12" r="8"
-                                stroke="currentColor"
-                                stroke-width="1.8" />
-
-                            <path d="M12 7V12L15 14"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round" />
-                        </svg>
+                    <div class="feature-icon purple">
+                        <span>◷</span>
                     </div>
 
                     <div>
                         <strong>Study Routine</strong>
-                        <span>Plan your day better</span>
+                        <small>Plan your day better</small>
                     </div>
 
                 </div>
@@ -149,23 +154,13 @@
 
                 <div class="welcome-feature">
 
-                    <div class="feature-icon cyan-icon">
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M12 3L13.8 8.2L19 10L13.8 11.8L12 17L10.2 11.8L5 10L10.2 8.2L12 3Z"
-                                stroke="currentColor"
-                                stroke-width="1.7"
-                                stroke-linejoin="round" />
-
-                            <path d="M18 16L18.8 18.2L21 19L18.8 19.8L18 22L17.2 19.8L15 19L17.2 18.2L18 16Z"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linejoin="round" />
-                        </svg>
+                    <div class="feature-icon cyan">
+                        <span>✦</span>
                     </div>
 
                     <div>
                         <strong>AI Planner</strong>
-                        <span>Get personalized guidance</span>
+                        <small>Get personalized guidance</small>
                     </div>
 
                 </div>
@@ -175,40 +170,38 @@
         </div>
 
 
-        <!-- DASHBOARD PREVIEW -->
+        <!-- =================================================
+             DASHBOARD PREVIEW
+        ================================================== -->
 
         <div class="hero-preview">
 
             <div class="preview-window">
 
-                <!-- PREVIEW TOP BAR -->
-
+                <!-- PREVIEW TOPBAR -->
                 <div class="preview-topbar">
 
                     <div class="preview-brand">
 
-                        <div class="preview-logo">
-                            EB
-                        </div>
+                        <b>EB</b>
 
                         <span>EduBuddy</span>
 
                     </div>
 
                     <div class="preview-dots">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <i></i>
+                        <i></i>
+                        <i></i>
                     </div>
 
                 </div>
 
 
                 <!-- PREVIEW BODY -->
-
                 <div class="preview-body">
 
-                    <div class="preview-sidebar">
+                    <aside class="preview-sidebar">
 
                         <div class="preview-side-line active"></div>
                         <div class="preview-side-line"></div>
@@ -216,7 +209,7 @@
                         <div class="preview-side-line"></div>
                         <div class="preview-side-line"></div>
 
-                    </div>
+                    </aside>
 
 
                     <div class="preview-main">
@@ -224,8 +217,15 @@
                         <div class="preview-heading">
 
                             <div>
-                                <small>GOOD MORNING</small>
-                                <strong>Welcome back 👋</strong>
+
+                                <small>
+                                    GOOD MORNING
+                                </small>
+
+                                <strong>
+                                    Welcome back 👋
+                                </strong>
+
                             </div>
 
                             <div class="preview-avatar">
@@ -235,35 +235,28 @@
                         </div>
 
 
+                        <!-- PREVIEW STATS -->
                         <div class="preview-stats">
 
-                            <div class="preview-stat">
-                                <span></span>
-                                <div>
-                                    <small>Notes</small>
-                                    <strong>24</strong>
-                                </div>
+                            <div>
+                                <small>Notes</small>
+                                <b>24</b>
                             </div>
 
-                            <div class="preview-stat">
-                                <span></span>
-                                <div>
-                                    <small>Tasks</small>
-                                    <strong>08</strong>
-                                </div>
+                            <div>
+                                <small>Tasks</small>
+                                <b>08</b>
                             </div>
 
-                            <div class="preview-stat">
-                                <span></span>
-                                <div>
-                                    <small>Streak</small>
-                                    <strong>12d</strong>
-                                </div>
+                            <div>
+                                <small>Streak</small>
+                                <b>12d</b>
                             </div>
 
                         </div>
 
 
+                        <!-- PREVIEW CARDS -->
                         <div class="preview-cards">
 
                             <div class="preview-card large">
@@ -271,13 +264,15 @@
                                 <div class="fake-title"></div>
 
                                 <div class="fake-chart">
-                                    <span style="height:35%"></span>
-                                    <span style="height:55%"></span>
-                                    <span style="height:45%"></span>
-                                    <span style="height:75%"></span>
-                                    <span style="height:60%"></span>
-                                    <span style="height:90%"></span>
-                                    <span style="height:72%"></span>
+
+                                    <i style="height:35%"></i>
+                                    <i style="height:55%"></i>
+                                    <i style="height:45%"></i>
+                                    <i style="height:75%"></i>
+                                    <i style="height:60%"></i>
+                                    <i style="height:90%"></i>
+                                    <i style="height:72%"></i>
+
                                 </div>
 
                             </div>
@@ -288,9 +283,11 @@
                                 <div class="fake-title short"></div>
 
                                 <div class="fake-list">
+
                                     <i></i>
                                     <i></i>
                                     <i></i>
+
                                 </div>
 
                             </div>
@@ -313,7 +310,11 @@
          MAIN APPLICATION
     ====================================================== -->
 
-    <div id="app" class="app-layout" style="display:none;">
+    <div
+        id="app"
+        class="app-layout"
+        style="display:none;"
+    >
 
 
         <!-- =================================================
@@ -323,32 +324,10 @@
         <aside class="sidebar">
 
             <!-- SIDEBAR BRAND -->
-
             <div class="sidebar-brand">
 
                 <div class="sidebar-logo">
-
-                    <svg viewBox="0 0 48 48" fill="none">
-
-                        <rect x="5" y="7" width="38" height="34" rx="10"
-                            stroke="currentColor"
-                            stroke-width="2.5" />
-
-                        <path d="M14 17.5C14 16.67 14.67 16 15.5 16H23V32H15.5C14.67 32 14 31.33 14 30.5V17.5Z"
-                            fill="currentColor"
-                            opacity=".25" />
-
-                        <path d="M34 17.5C34 16.67 33.33 16 32.5 16H25V32H32.5C33.33 32 34 31.33 34 30.5V17.5Z"
-                            fill="currentColor"
-                            opacity=".25" />
-
-                        <path d="M24 16V32"
-                            stroke="currentColor"
-                            stroke-width="2.5"
-                            stroke-linecap="round" />
-
-                    </svg>
-
+                    EB
                 </div>
 
                 <div class="sidebar-brand-name">
@@ -358,8 +337,7 @@
             </div>
 
 
-            <!-- NAVIGATION -->
-
+            <!-- WORKSPACE -->
             <div class="sidebar-section-title">
                 WORKSPACE
             </div>
@@ -367,113 +345,45 @@
 
             <nav class="sidebar-nav">
 
-
-                <!-- DASHBOARD -->
-
-                <button class="nav-item active"
-                    onclick="showPage('dashboardPage', this)">
-
-                    <svg viewBox="0 0 24 24" fill="none">
-
-                        <rect x="4" y="4" width="6" height="6" rx="1.2"
-                            stroke="currentColor"
-                            stroke-width="1.8" />
-
-                        <rect x="14" y="4" width="6" height="6" rx="1.2"
-                            stroke="currentColor"
-                            stroke-width="1.8" />
-
-                        <rect x="4" y="14" width="6" height="6" rx="1.2"
-                            stroke="currentColor"
-                            stroke-width="1.8" />
-
-                        <rect x="14" y="14" width="6" height="6" rx="1.2"
-                            stroke="currentColor"
-                            stroke-width="1.8" />
-
-                    </svg>
-
+                <button
+                    class="nav-item active"
+                    onclick="showPage('dashboardPage', this)"
+                >
+                    ▦
                     <span>Dashboard</span>
-
                 </button>
 
 
-                <!-- NOTES -->
-
-                <button class="nav-item"
-                    onclick="showPage('notesPage', this)">
-
-                    <svg viewBox="0 0 24 24" fill="none">
-
-                        <path d="M5 4H19V20H5V4Z"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                            stroke-linejoin="round" />
-
-                        <path d="M8 8H16M8 12H16M8 16H13"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                            stroke-linecap="round" />
-
-                    </svg>
-
+                <button
+                    class="nav-item"
+                    onclick="showPage('notesPage', this)"
+                >
+                    ▤
                     <span>Notes</span>
-
                 </button>
 
 
-                <!-- ROUTINE -->
-
-                <button class="nav-item"
-                    onclick="showPage('routinePage', this)">
-
-                    <svg viewBox="0 0 24 24" fill="none">
-
-                        <circle cx="12" cy="12" r="8"
-                            stroke="currentColor"
-                            stroke-width="1.8" />
-
-                        <path d="M12 7V12L15 14"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                            stroke-linecap="round" />
-
-                    </svg>
-
+                <button
+                    class="nav-item"
+                    onclick="showPage('routinePage', this)"
+                >
+                    ◷
                     <span>Routine</span>
-
                 </button>
 
 
-                <!-- STUDY CHAT -->
-
-                <button class="nav-item"
-                    onclick="showPage('chatPage', this)">
-
-                    <svg viewBox="0 0 24 24" fill="none">
-
-                        <path d="M5 5H19V16H13L9 20V16H5V5Z"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                            stroke-linejoin="round" />
-
-                        <path d="M8 9H16M8 12H13"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                            stroke-linecap="round" />
-
-                    </svg>
-
+                <button
+                    class="nav-item"
+                    onclick="showPage('chatPage', this)"
+                >
+                    ◌
                     <span>Study Chat</span>
-
                 </button>
-
 
             </nav>
 
 
-            <!-- AI SECTION -->
-
+            <!-- AI TOOLS -->
             <div class="sidebar-section-title">
                 AI TOOLS
             </div>
@@ -481,140 +391,64 @@
 
             <nav class="sidebar-nav">
 
-
-                <!-- AI PLANNER -->
-
-                <button class="nav-item"
-                    onclick="showPage('aiPage', this)">
-
-                    <svg viewBox="0 0 24 24" fill="none">
-
-                        <path d="M12 3L13.8 8.2L19 10L13.8 11.8L12 17L10.2 11.8L5 10L10.2 8.2L12 3Z"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linejoin="round" />
-
-                        <path d="M18 16L18.8 18.2L21 19L18.8 19.8L18 22L17.2 19.8L15 19L17.2 18.2L18 16Z"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linejoin="round" />
-
-                    </svg>
-
+                <button
+                    class="nav-item"
+                    onclick="showPage('aiPage', this)"
+                >
+                    ✦
                     <span>AI Study Planner</span>
-
-                    <span class="nav-badge">AI</span>
-
+                    <em>AI</em>
                 </button>
 
 
-                <!-- RESUME -->
-
-                <button class="nav-item"
-                    onclick="showPage('resumePage', this)">
-
-                    <svg viewBox="0 0 24 24" fill="none">
-
-                        <path d="M6 3H14L19 8V21H6V3Z"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                            stroke-linejoin="round" />
-
-                        <path d="M14 3V8H19"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                            stroke-linejoin="round" />
-
-                        <path d="M9 13H16M9 17H14"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                            stroke-linecap="round" />
-
-                    </svg>
-
+                <button
+                    class="nav-item"
+                    onclick="showPage('resumePage', this)"
+                >
+                    ▱
                     <span>Resume Maker</span>
-
                 </button>
 
 
-                <!-- SUMMARY -->
-
-                <button class="nav-item"
-                    onclick="showPage('summaryPage', this)">
-
-                    <svg viewBox="0 0 24 24" fill="none">
-
-                        <path d="M5 4H19V20H5V4Z"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                            stroke-linejoin="round" />
-
-                        <path d="M8 8H16M8 12H16M8 16H13"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                            stroke-linecap="round" />
-
-                    </svg>
-
+                <button
+                    class="nav-item"
+                    onclick="showPage('summaryPage', this)"
+                >
+                    ▤
                     <span>Summary Maker</span>
-
                 </button>
-
 
             </nav>
 
 
             <!-- SIDEBAR BOTTOM -->
-
             <div class="sidebar-bottom">
 
                 <div class="sidebar-tip">
 
-                    <div class="tip-icon">
-
-                        <svg viewBox="0 0 24 24" fill="none">
-
-                            <path d="M9 18H15"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round" />
-
-                            <path d="M10 21H14"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round" />
-
-                            <path d="M8 15C6.75 13.94 6 12.39 6 10.66C6 7.54 8.69 5 12 5C15.31 5 18 7.54 18 10.66C18 12.39 17.25 13.94 16 15C15.25 15.64 15 16.1 15 17H9C9 16.1 8.75 15.64 8 15Z"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linejoin="round" />
-
-                        </svg>
-
-                    </div>
+                    <b>💡</b>
 
                     <div>
-                        <strong>Study tip</strong>
-                        <span>Small progress every day adds up.</span>
+
+                        <strong>
+                            Study tip
+                        </strong>
+
+                        <small>
+                            Small progress every day adds up.
+                        </small>
+
                     </div>
 
                 </div>
 
 
-                <button class="back-home-btn" onclick="goToWelcome()">
-
-                    <svg viewBox="0 0 24 24" fill="none">
-
-                        <path d="M15 18L9 12L15 6"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                            stroke-linecap="round"
-                            stroke-linejoin="round" />
-
-                    </svg>
-
+                <button
+                    class="back-home-btn"
+                    onclick="goToWelcome()"
+                >
+                    ←
                     <span>Back to Home</span>
-
                 </button>
 
             </div>
@@ -630,29 +464,28 @@
         <main class="main-content">
 
 
-            <!-- TOP BAR -->
-
+            <!-- TOPBAR -->
             <header class="topbar">
 
-                <div class="topbar-left">
+                <div>
 
-                    <div class="mobile-menu-icon">
-                        ☰
-                    </div>
+                    <small>
+                        EDUBUDDY
+                    </small>
 
-                    <div>
-                        <span class="topbar-label">EDUBUDDY</span>
-                        <h2 id="topbarTitle">Dashboard</h2>
-                    </div>
+                    <h2 id="topbarTitle">
+                        Dashboard
+                    </h2>
 
                 </div>
 
 
                 <div class="topbar-right">
 
-                    <div class="topbar-date" id="currentDate">
+                    <span id="currentDate">
                         Today
-                    </div>
+                    </span>
+
 
                     <div class="user-profile">
 
@@ -660,9 +493,16 @@
                             S
                         </div>
 
-                        <div class="user-info">
-                            <strong>Student</strong>
-                            <span>Keep learning</span>
+                        <div>
+
+                            <strong>
+                                Student
+                            </strong>
+
+                            <small>
+                                Keep learning
+                            </small>
+
                         </div>
 
                     </div>
@@ -677,10 +517,10 @@
                  DASHBOARD PAGE
             ================================================== -->
 
-            <section id="dashboardPage" class="page active-page">
-
-
-                <!-- PAGE HEADER -->
+            <section
+                id="dashboardPage"
+                class="page active-page"
+            >
 
                 <div class="page-heading">
 
@@ -691,7 +531,8 @@
                         </span>
 
                         <h1>
-                            Welcome back, <span>Student</span> 👋
+                            Welcome back,
+                            <span>Student</span> 👋
                         </h1>
 
                         <p>
@@ -703,152 +544,119 @@
                 </div>
 
 
-
-                <!-- STAT CARDS -->
-
+                <!-- STATS -->
                 <div class="stats-grid">
 
 
                     <div class="stat-card">
 
-                        <div class="stat-icon blue-stat">
-
-                            <svg viewBox="0 0 24 24" fill="none">
-
-                                <path d="M5 4H19V20H5V4Z"
-                                    stroke="currentColor"
-                                    stroke-width="1.8"
-                                    stroke-linejoin="round" />
-
-                                <path d="M8 8H16M8 12H16M8 16H13"
-                                    stroke="currentColor"
-                                    stroke-width="1.8"
-                                    stroke-linecap="round" />
-
-                            </svg>
-
+                        <div class="stat-icon blue">
+                            ▤
                         </div>
 
-                        <div class="stat-content">
+                        <div>
 
-                            <span>Total Notes</span>
+                            <span>
+                                Total Notes
+                            </span>
 
                             <strong id="notesCount">
                                 0
                             </strong>
 
-                            <small>Your saved study notes</small>
+                            <small>
+                                Your saved study notes
+                            </small>
 
                         </div>
 
                     </div>
 
 
-
                     <div class="stat-card">
 
-                        <div class="stat-icon purple-stat">
-
-                            <svg viewBox="0 0 24 24" fill="none">
-
-                                <circle cx="12" cy="12" r="8"
-                                    stroke="currentColor"
-                                    stroke-width="1.8" />
-
-                                <path d="M12 7V12L15 14"
-                                    stroke="currentColor"
-                                    stroke-width="1.8"
-                                    stroke-linecap="round" />
-
-                            </svg>
-
+                        <div class="stat-icon purple">
+                            ◷
                         </div>
 
-                        <div class="stat-content">
+                        <div>
 
-                            <span>Today's Tasks</span>
+                            <span>
+                                Today's Tasks
+                            </span>
 
                             <strong id="tasksCount">
                                 0
                             </strong>
 
-                            <small>Tasks in your routine</small>
+                            <small>
+                                Tasks in your routine
+                            </small>
 
                         </div>
 
                     </div>
-
 
 
                     <div class="stat-card">
 
-                        <div class="stat-icon cyan-stat">
-
-                            <svg viewBox="0 0 24 24" fill="none">
-
-                                <path d="M12 3L13.8 8.2L19 10L13.8 11.8L12 17L10.2 11.8L5 10L10.2 8.2L12 3Z"
-                                    stroke="currentColor"
-                                    stroke-width="1.7"
-                                    stroke-linejoin="round" />
-
-                            </svg>
-
+                        <div class="stat-icon cyan">
+                            ✦
                         </div>
 
-                        <div class="stat-content">
+                        <div>
 
-                            <span>AI Planner</span>
+                            <span>
+                                AI Planner
+                            </span>
 
-                            <strong>AI</strong>
+                            <strong>
+                                AI
+                            </strong>
 
-                            <small>Personalized study guidance</small>
+                            <small>
+                                Personalized study guidance
+                            </small>
 
                         </div>
 
                     </div>
-
 
 
                     <div class="stat-card">
 
-                        <div class="stat-icon green-stat">
-
-                            <svg viewBox="0 0 24 24" fill="none">
-
-                                <path d="M12 3L14.5 9.5L21 12L14.5 14.5L12 21L9.5 14.5L3 12L9.5 9.5L12 3Z"
-                                    stroke="currentColor"
-                                    stroke-width="1.7"
-                                    stroke-linejoin="round" />
-
-                            </svg>
-
+                        <div class="stat-icon green">
+                            ◆
                         </div>
 
-                        <div class="stat-content">
+                        <div>
 
-                            <span>Productivity</span>
+                            <span>
+                                Productivity
+                            </span>
 
-                            <strong>Focus</strong>
+                            <strong>
+                                Focus
+                            </strong>
 
-                            <small>Keep building your streak</small>
+                            <small>
+                                Keep building your streak
+                            </small>
 
                         </div>
 
                     </div>
-
 
                 </div>
 
 
 
-                <!-- DASHBOARD GRID -->
-
+                <!-- DASHBOARD CARDS -->
                 <div class="dashboard-grid">
 
 
-                    <!-- TODAY'S ROUTINE -->
-
-                    <div class="dashboard-card routine-card">
+                    <!-- ROUTINE -->
+                    <div class="dashboard-card">
 
                         <div class="card-header">
 
@@ -864,21 +672,24 @@
 
                             </div>
 
-                            <button class="text-btn"
-                                onclick="showPage('routinePage')">
+                            <button
+                                class="text-btn"
+                                onclick="showPage('routinePage')"
+                            >
                                 View all →
                             </button>
 
                         </div>
 
 
-                        <div id="dashboardTasks" class="dashboard-task-list">
+                        <div
+                            id="dashboardTasks"
+                            class="dashboard-task-list"
+                        >
 
                             <div class="empty-dashboard">
 
-                                <div class="empty-icon">
-                                    ✓
-                                </div>
+                                <b>✓</b>
 
                                 <strong>
                                     No tasks yet
@@ -897,8 +708,7 @@
 
 
                     <!-- QUICK ACTIONS -->
-
-                    <div class="dashboard-card quick-card">
+                    <div class="dashboard-card">
 
                         <div class="card-header">
 
@@ -919,105 +729,71 @@
 
                         <div class="quick-actions">
 
+
                             <button onclick="showPage('notesPage')">
 
-                                <div class="quick-icon blue-stat">
-
-                                    <svg viewBox="0 0 24 24" fill="none">
-
-                                        <path d="M5 4H19V20H5V4Z"
-                                            stroke="currentColor"
-                                            stroke-width="1.8" />
-
-                                        <path d="M8 8H16M8 12H16"
-                                            stroke="currentColor"
-                                            stroke-width="1.8"
-                                            stroke-linecap="round" />
-
-                                    </svg>
-
-                                </div>
+                                <span class="quick-icon blue">
+                                    ▤
+                                </span>
 
                                 <span>
                                     Create Note
                                 </span>
 
-                                <b>→</b>
+                                <b>
+                                    →
+                                </b>
 
                             </button>
 
 
                             <button onclick="showPage('routinePage')">
 
-                                <div class="quick-icon purple-stat">
-
-                                    <svg viewBox="0 0 24 24" fill="none">
-
-                                        <circle cx="12" cy="12" r="8"
-                                            stroke="currentColor"
-                                            stroke-width="1.8" />
-
-                                        <path d="M12 7V12L15 14"
-                                            stroke="currentColor"
-                                            stroke-width="1.8"
-                                            stroke-linecap="round" />
-
-                                    </svg>
-
-                                </div>
+                                <span class="quick-icon purple">
+                                    ◷
+                                </span>
 
                                 <span>
                                     Add Routine
                                 </span>
 
-                                <b>→</b>
+                                <b>
+                                    →
+                                </b>
 
                             </button>
 
 
                             <button onclick="showPage('chatPage')">
 
-                                <div class="quick-icon cyan-stat">
-
-                                    <svg viewBox="0 0 24 24" fill="none">
-
-                                        <path d="M5 5H19V16H13L9 20V16H5V5Z"
-                                            stroke="currentColor"
-                                            stroke-width="1.8"
-                                            stroke-linejoin="round" />
-
-                                    </svg>
-
-                                </div>
+                                <span class="quick-icon cyan">
+                                    ◌
+                                </span>
 
                                 <span>
                                     Ask Study Chat
                                 </span>
 
-                                <b>→</b>
+                                <b>
+                                    →
+                                </b>
 
                             </button>
 
 
                             <button onclick="showPage('aiPage')">
 
-                                <div class="quick-icon green-stat">
-
-                                    <svg viewBox="0 0 24 24" fill="none">
-
-                                        <path d="M12 3L13.8 8.2L19 10L13.8 11.8L12 17L10.2 11.8L5 10L10.2 8.2L12 3Z"
-                                            stroke="currentColor"
-                                            stroke-width="1.7" />
-
-                                    </svg>
-
-                                </div>
+                                <span class="quick-icon green">
+                                    ✦
+                                </span>
 
                                 <span>
                                     AI Study Planner
                                 </span>
 
-                                <b>→</b>
+                                <b>
+                                    →
+                                </b>
 
                             </button>
 
@@ -1025,50 +801,37 @@
 
                     </div>
 
-
                 </div>
 
 
 
                 <!-- AI BANNER -->
-
                 <div class="ai-banner">
 
                     <div class="ai-banner-icon">
-
-                        <svg viewBox="0 0 24 24" fill="none">
-
-                            <path d="M12 3L13.8 8.2L19 10L13.8 11.8L12 17L10.2 11.8L5 10L10.2 8.2L12 3Z"
-                                stroke="currentColor"
-                                stroke-width="1.7"
-                                stroke-linejoin="round" />
-
-                            <path d="M18 16L18.8 18.2L21 19L18.8 19.8L18 22L17.2 19.8L15 19L17.2 18.2L18 16Z"
-                                stroke="currentColor"
-                                stroke-width="1.5" />
-
-                        </svg>
-
+                        ✦
                     </div>
 
+                    <div>
 
-                    <div class="ai-banner-content">
-
-                        <span>AI STUDY ASSISTANT</span>
+                        <span>
+                            AI STUDY ASSISTANT
+                        </span>
 
                         <h3>
                             Not sure what to study next?
                         </h3>
 
                         <p>
-                            Tell EduBuddy your subject, difficulty and available
-                            time to get a personalized study recommendation.
+                            Tell EduBuddy your subject, difficulty and
+                            available time to get a study recommendation.
                         </p>
 
                     </div>
 
-
-                    <button onclick="showPage('aiPage')">
+                    <button
+                        onclick="showPage('aiPage')"
+                    >
                         Try AI Planner →
                     </button>
 
@@ -1082,7 +845,10 @@
                  NOTES PAGE
             ================================================== -->
 
-            <section id="notesPage" class="page">
+            <section
+                id="notesPage"
+                class="page"
+            >
 
                 <div class="page-heading">
 
@@ -1108,6 +874,7 @@
                 <div class="feature-layout">
 
 
+                    <!-- CREATE NOTE -->
                     <div class="feature-card">
 
                         <div class="feature-card-header">
@@ -1134,9 +901,10 @@
                             </label>
 
                             <input
-                                type="text"
                                 id="subject"
-                                placeholder="e.g. Machine Learning">
+                                type="text"
+                                placeholder="e.g. Machine Learning"
+                            >
 
                         </div>
 
@@ -1150,22 +918,24 @@
                             <textarea
                                 id="noteInput"
                                 rows="7"
-                                placeholder="Write your study note here..."></textarea>
+                                placeholder="Write your study note here..."
+                            ></textarea>
 
                         </div>
 
 
-                        <button class="primary-btn"
-                            onclick="addNote()">
-
+                        <button
+                            class="primary-btn"
+                            onclick="addNote()"
+                        >
                             Save Note
-
                         </button>
 
                     </div>
 
 
 
+                    <!-- SAVED NOTES -->
                     <div class="feature-card">
 
                         <div class="feature-card-header">
@@ -1185,13 +955,14 @@
                         </div>
 
 
-                        <div id="notesList" class="notes-list">
+                        <div
+                            id="notesList"
+                            class="notes-list"
+                        >
 
                             <div class="empty-state">
 
-                                <div class="empty-state-icon">
-                                    📝
-                                </div>
+                                <b>📝</b>
 
                                 <h3>
                                     No notes yet
@@ -1217,7 +988,10 @@
                  ROUTINE PAGE
             ================================================== -->
 
-            <section id="routinePage" class="page">
+            <section
+                id="routinePage"
+                class="page"
+            >
 
                 <div class="page-heading">
 
@@ -1243,6 +1017,7 @@
                 <div class="feature-layout">
 
 
+                    <!-- ADD TASK -->
                     <div class="feature-card">
 
                         <div class="feature-card-header">
@@ -1269,9 +1044,10 @@
                             </label>
 
                             <input
-                                type="text"
                                 id="taskInput"
-                                placeholder="e.g. Study Decision Trees">
+                                type="text"
+                                placeholder="e.g. Study Decision Trees"
+                            >
 
                         </div>
 
@@ -1283,23 +1059,25 @@
                             </label>
 
                             <input
+                                id="taskTime"
                                 type="time"
-                                id="taskTime">
+                            >
 
                         </div>
 
 
-                        <button class="primary-btn"
-                            onclick="addTask()">
-
+                        <button
+                            class="primary-btn"
+                            onclick="addTask()"
+                        >
                             Add to Routine
-
                         </button>
 
                     </div>
 
 
 
+                    <!-- TASK LIST -->
                     <div class="feature-card">
 
                         <div class="feature-card-header">
@@ -1319,13 +1097,14 @@
                         </div>
 
 
-                        <div id="taskList" class="task-list">
+                        <div
+                            id="taskList"
+                            class="task-list"
+                        >
 
                             <div class="empty-state">
 
-                                <div class="empty-state-icon">
-                                    ⏰
-                                </div>
+                                <b>⏰</b>
 
                                 <h3>
                                     No tasks yet
@@ -1348,10 +1127,13 @@
 
 
             <!-- =================================================
-                 STUDY CHAT PAGE
+                 STUDY CHAT
             ================================================== -->
 
-            <section id="chatPage" class="page">
+            <section
+                id="chatPage"
+                class="page"
+            >
 
                 <div class="page-heading">
 
@@ -1377,20 +1159,15 @@
                 <div class="chat-container">
 
 
-                    <div id="chatList" class="chat-list">
+                    <div
+                        id="chatList"
+                        class="chat-list"
+                    >
 
                         <div class="chat-welcome">
 
                             <div class="chat-ai-icon">
-
-                                <svg viewBox="0 0 24 24" fill="none">
-
-                                    <path d="M12 3L13.8 8.2L19 10L13.8 11.8L12 17L10.2 11.8L5 10L10.2 8.2L12 3Z"
-                                        stroke="currentColor"
-                                        stroke-width="1.7" />
-
-                                </svg>
-
+                                ✦
                             </div>
 
                             <h3>
@@ -1410,21 +1187,20 @@
                     <div class="chat-input-area">
 
                         <input
-                            type="text"
                             id="chatUser"
-                            placeholder="Your name">
+                            placeholder="Your name"
+                        >
 
                         <input
-                            type="text"
                             id="chatMessage"
-                            placeholder="Ask your study question...">
+                            placeholder="Ask your study question..."
+                        >
 
                         <button
                             class="primary-btn"
-                            onclick="sendChat()">
-
+                            onclick="sendChat()"
+                        >
                             Send
-
                         </button>
 
                     </div>
@@ -1439,7 +1215,10 @@
                  AI STUDY PLANNER
             ================================================== -->
 
-            <section id="aiPage" class="page">
+            <section
+                id="aiPage"
+                class="page"
+            >
 
                 <div class="page-heading">
 
@@ -1466,8 +1245,7 @@
 
 
                     <!-- INPUT -->
-
-                    <div class="feature-card ai-form-card">
+                    <div class="feature-card">
 
                         <div class="feature-card-header">
 
@@ -1493,9 +1271,9 @@
                             </label>
 
                             <input
-                                type="text"
                                 id="aiSubject"
-                                placeholder="e.g. Machine Learning">
+                                placeholder="e.g. Machine Learning"
+                            >
 
                         </div>
 
@@ -1512,7 +1290,10 @@
                                     Easy
                                 </option>
 
-                                <option value="medium" selected>
+                                <option
+                                    value="medium"
+                                    selected
+                                >
                                     Medium
                                 </option>
 
@@ -1532,11 +1313,12 @@
                             </label>
 
                             <input
-                                type="number"
                                 id="aiScore"
+                                type="number"
                                 min="0"
                                 max="100"
-                                placeholder="e.g. 65">
+                                placeholder="e.g. 65"
+                            >
 
                         </div>
 
@@ -1548,21 +1330,21 @@
                             </label>
 
                             <input
-                                type="number"
                                 id="aiHours"
+                                type="number"
                                 min="1"
                                 max="24"
-                                placeholder="e.g. 3">
+                                placeholder="e.g. 3"
+                            >
 
                         </div>
 
 
                         <button
                             class="primary-btn"
-                            onclick="getAIRecommendation()">
-
+                            onclick="getAIRecommendation()"
+                        >
                             Generate Recommendation
-
                         </button>
 
                     </div>
@@ -1570,8 +1352,7 @@
 
 
                     <!-- RESULT -->
-
-                    <div class="feature-card ai-result-card">
+                    <div class="feature-card">
 
                         <div class="feature-card-header">
 
@@ -1587,28 +1368,22 @@
 
                             </div>
 
-                            <div class="ai-mini-icon">
+                            <b class="ai-mini-icon">
                                 AI
-                            </div>
+                            </b>
 
                         </div>
 
 
-                        <div id="aiRecommendation"
-                            class="ai-recommendation">
+                        <div
+                            id="aiRecommendation"
+                            class="ai-recommendation"
+                        >
 
                             <div class="ai-placeholder">
 
-                                <div class="ai-placeholder-icon">
-
-                                    <svg viewBox="0 0 24 24" fill="none">
-
-                                        <path d="M12 3L13.8 8.2L19 10L13.8 11.8L12 17L10.2 11.8L5 10L10.2 8.2L12 3Z"
-                                            stroke="currentColor"
-                                            stroke-width="1.7" />
-
-                                    </svg>
-
+                                <div>
+                                    ✦
                                 </div>
 
                                 <h3>
@@ -1630,7 +1405,6 @@
 
 
                 <!-- AI HISTORY -->
-
                 <div class="feature-card history-card">
 
                     <div class="feature-card-header">
@@ -1672,7 +1446,10 @@
                  RESUME MAKER
             ================================================== -->
 
-            <section id="resumePage" class="page">
+            <section
+                id="resumePage"
+                class="page"
+            >
 
                 <div class="page-heading">
 
@@ -1698,6 +1475,7 @@
                 <div class="resume-layout">
 
 
+                    <!-- RESUME FORM -->
                     <div class="feature-card">
 
                         <div class="feature-card-header">
@@ -1724,9 +1502,9 @@
                             </label>
 
                             <input
-                                type="text"
                                 id="name"
-                                placeholder="Your name">
+                                placeholder="Your name"
+                            >
 
                         </div>
 
@@ -1738,9 +1516,10 @@
                             </label>
 
                             <input
-                                type="email"
                                 id="email"
-                                placeholder="you@example.com">
+                                type="email"
+                                placeholder="you@example.com"
+                            >
 
                         </div>
 
@@ -1752,9 +1531,9 @@
                             </label>
 
                             <input
-                                type="text"
                                 id="phone"
-                                placeholder="Your phone number">
+                                placeholder="Your phone number"
+                            >
 
                         </div>
 
@@ -1768,7 +1547,8 @@
                             <textarea
                                 id="education"
                                 rows="3"
-                                placeholder="B.Tech AIML, College, University..."></textarea>
+                                placeholder="B.Tech AIML, College, University..."
+                            ></textarea>
 
                         </div>
 
@@ -1782,7 +1562,8 @@
                             <textarea
                                 id="skills"
                                 rows="3"
-                                placeholder="Python, Machine Learning, HTML, CSS..."></textarea>
+                                placeholder="Python, Machine Learning, HTML, CSS..."
+                            ></textarea>
 
                         </div>
 
@@ -1796,24 +1577,25 @@
                             <textarea
                                 id="experience"
                                 rows="4"
-                                placeholder="Projects, internships or experience..."></textarea>
+                                placeholder="Projects, internships or experience..."
+                            ></textarea>
 
                         </div>
 
 
                         <button
                             class="primary-btn"
-                            onclick="generateResume()">
-
+                            onclick="generateResume()"
+                        >
                             Generate Resume
-
                         </button>
 
                     </div>
 
 
 
-                    <div class="feature-card resume-preview-card">
+                    <!-- RESUME PREVIEW -->
+                    <div class="feature-card">
 
                         <div class="feature-card-header">
 
@@ -1832,14 +1614,16 @@
                         </div>
 
 
-                        <div id="resumeOutput"
-                            class="resume-output">
+                        <div
+                            id="resumeOutput"
+                            class="resume-output"
+                        >
 
                             <div class="resume-placeholder">
 
-                                <div class="resume-placeholder-icon">
+                                <b>
                                     CV
-                                </div>
+                                </b>
 
                                 <h3>
                                     Resume preview
@@ -1866,7 +1650,10 @@
                  SUMMARY MAKER
             ================================================== -->
 
-            <section id="summaryPage" class="page">
+            <section
+                id="summaryPage"
+                class="page"
+            >
 
                 <div class="page-heading">
 
@@ -1881,7 +1668,8 @@
                         </h1>
 
                         <p>
-                            Turn long study material into quick revision notes.
+                            Turn long study material into quick
+                            revision notes.
                         </p>
 
                     </div>
@@ -1892,6 +1680,7 @@
                 <div class="summary-layout">
 
 
+                    <!-- INPUT -->
                     <div class="feature-card">
 
                         <div class="feature-card-header">
@@ -1917,23 +1706,24 @@
                                 id="summaryInput"
                                 class="summary-textarea"
                                 rows="16"
-                                placeholder="Paste your study material here..."></textarea>
+                                placeholder="Paste your study material here..."
+                            ></textarea>
 
                         </div>
 
 
                         <button
                             class="primary-btn"
-                            onclick="generateSummary()">
-
+                            onclick="generateSummary()"
+                        >
                             Generate Summary
-
                         </button>
 
                     </div>
 
 
 
+                    <!-- OUTPUT -->
                     <div class="feature-card">
 
                         <div class="feature-card-header">
@@ -1953,14 +1743,16 @@
                         </div>
 
 
-                        <div id="summaryOutput"
-                            class="summary-output">
+                        <div
+                            id="summaryOutput"
+                            class="summary-output"
+                        >
 
                             <div class="summary-placeholder">
 
-                                <div class="summary-placeholder-icon">
+                                <b>
                                     ✦
-                                </div>
+                                </b>
 
                                 <h3>
                                     Summary will appear here
@@ -1981,7 +1773,6 @@
 
             </section>
 
-
         </main>
 
     </div>
@@ -1992,226 +1783,8 @@
          JAVASCRIPT
     ====================================================== -->
 
-    <script src="script.js?v=4"></script>
-    <script src="ai.js?v=4"></script>
-
-
-    <script>
-
-        /* ================================================
-           START DASHBOARD
-        ================================================ */
-
-        function startDashboard() {
-
-            const welcome = document.getElementById("welcomeScreen");
-            const app = document.getElementById("app");
-
-            if (welcome) {
-                welcome.style.display = "none";
-            }
-
-            if (app) {
-                app.style.display = "flex";
-            }
-
-            showPage("dashboardPage");
-
-            if (typeof updateDashboardStats === "function") {
-                updateDashboardStats();
-            }
-
-        }
-
-
-
-        /* ================================================
-           SHOW PAGE
-        ================================================ */
-
-        function showPage(pageId, clickedButton = null) {
-
-            const pages = document.querySelectorAll(".page");
-
-            pages.forEach(function (page) {
-
-                page.classList.remove("active-page");
-
-            });
-
-
-            const selectedPage = document.getElementById(pageId);
-
-            if (selectedPage) {
-
-                selectedPage.classList.add("active-page");
-
-            }
-
-
-            const navItems = document.querySelectorAll(".nav-item");
-
-            navItems.forEach(function (item) {
-
-                item.classList.remove("active");
-
-            });
-
-
-            if (clickedButton) {
-
-                clickedButton.classList.add("active");
-
-            }
-            else {
-
-                navItems.forEach(function (item) {
-
-                    const onclickText = item.getAttribute("onclick") || "";
-
-                    if (onclickText.includes("'" + pageId + "'")) {
-
-                        item.classList.add("active");
-
-                    }
-
-                });
-
-            }
-
-
-            /* TOPBAR TITLE */
-
-            const titles = {
-
-                dashboardPage: "Dashboard",
-
-                notesPage: "Notes",
-
-                routinePage: "Routine",
-
-                chatPage: "Study Chat",
-
-                aiPage: "AI Study Planner",
-
-                resumePage: "Resume Maker",
-
-                summaryPage: "Summary Maker"
-
-            };
-
-
-            const titleElement =
-                document.getElementById("topbarTitle");
-
-            if (titleElement) {
-
-                titleElement.textContent =
-                    titles[pageId] || "EduBuddy";
-
-            }
-
-
-            /* Scroll to top */
-
-            window.scrollTo({
-
-                top: 0,
-
-                behavior: "smooth"
-
-            });
-
-        }
-
-
-
-        /* ================================================
-           BACK TO WELCOME
-        ================================================ */
-
-        function goToWelcome() {
-
-            const welcome =
-                document.getElementById("welcomeScreen");
-
-            const app =
-                document.getElementById("app");
-
-
-            if (app) {
-
-                app.style.display = "none";
-
-            }
-
-
-            if (welcome) {
-
-                welcome.style.display = "flex";
-
-            }
-
-        }
-
-
-
-        /* ================================================
-           CURRENT DATE
-        ================================================ */
-
-        function setCurrentDate() {
-
-            const dateElement =
-                document.getElementById("currentDate");
-
-            if (!dateElement) return;
-
-
-            const today = new Date();
-
-
-            const options = {
-
-                weekday: "short",
-
-                month: "short",
-
-                day: "numeric"
-
-            };
-
-
-            dateElement.textContent =
-                today.toLocaleDateString("en-US", options);
-
-        }
-
-
-
-        /* ================================================
-           INITIALIZE
-        ================================================ */
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            function () {
-
-                setCurrentDate();
-
-                showPage("dashboardPage");
-
-                if (typeof updateDashboardStats === "function") {
-
-                    updateDashboardStats();
-
-                }
-
-            }
-        );
-
-    </script>
+    <script src="./script.js?v=20260920"></script>
+    <script src="./ai.js?v=20260920"></script>
 
 </body>
-
 </html>
