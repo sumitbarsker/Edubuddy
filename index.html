@@ -1,1 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="EduBuddy - All-in-one student productivity dashboard"
+    >
+
+    <title>EduBuddy | Student Dashboard</title>
+
+    <!-- Google Font -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main CSS -->
+    <link
+        rel="stylesheet"
+        href="style.css?v=2"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==================================================
+         NAVBAR
+    =================================================== -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            EduBuddy
+        </div>
+
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="#dashboard">
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="#notes">
+                    Notes
+                </a>
+            </li>
+
+            <li>
+                <a href="#routine">
+                    Routine
+                </a>
+            </li>
+
+            <li>
+                <a href="#resume">
+                    Resume
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- ==================================================
+         HERO SECTION
+    =================================================== -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+
+            <!-- Study Image -->
+
+            <img
+                src="images/study-graphic.png"
+                alt="Study Graphic"
+                class="hero-image"
+                onerror="this.style.display='none';"
+            >
+
+
+            <!-- Main Heading -->
+
+            <h1>
+                Welcome to EduBuddy
+            </h1>
+
+
+            <!-- Subtitle -->
+
+            <p>
+                Your all-in-one student productivity dashboard
+            </p>
+
+
+            <!-- Start Button -->
+
+            <button
+                class="start-btn"
+                onclick="startDashboard()"
+            >
+                Get Started
+            </button>
+
+
+            <!-- Random Quote -->
+
+            <div
+                class="quote-box"
+                id="quoteBox"
+            ></div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         DASHBOARD
+    =================================================== -->
+
+    <section
+        class="dashboard"
+        id="dashboard"
+    >
+
+
+        <!-- Dashboard Heading -->
+
+        <h2>
+            Welcome, Student 👋
+        </h2>
+
+
+        <p>
+            Manage your studies, notes, routine and AI recommendations in one place.
+        </p>
+
+
+
+        <!-- ==================================================
+             CARDS GRID
+        =================================================== -->
+
+        <div class="cards">
+
+
+
+            <!-- ==================================================
+                 DAILY REMINDER
+            =================================================== -->
+
+            <div class="card">
+
+                <h3>
+                    📅 Daily Reminder
+                </h3>
+
+
+                <p>
+                    Set study reminders for your subjects.
+                </p>
+
+
+                <input
+                    type="text"
+                    id="subject"
+                    placeholder="Enter subject"
+                    autocomplete="off"
+                >
+
+
+                <input
+                    type="time"
+                    id="time"
+                >
+
+
+                <button
+                    type="button"
+                    onclick="setReminder()"
+                >
+                    Set Reminder
+                </button>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 NOTES
+            =================================================== -->
+
+            <div
+                class="card"
+                id="notes"
+            >
+
+                <h3>
+                    📝 Notes
+                </h3>
+
+
+                <p>
+                    Write and save your important study notes.
+                </p>
+
+
+                <textarea
+                    id="noteInput"
+                    placeholder="Type your note here..."
+                ></textarea>
+
+
+                <button
+                    type="button"
+                    onclick="saveNote()"
+                >
+                    Save Note
+                </button>
+
+
+                <h4>
+                    Saved Notes
+                </h4>
+
+
+                <ul id="notesList"></ul>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 ROUTINE MANAGER
+            =================================================== -->
+
+            <div
+                class="card"
+                id="routine"
+            >
+
+                <h3>
+                    ⏰ Routine Manager
+                </h3>
+
+
+                <p>
+                    Plan and manage your daily study schedule.
+                </p>
+
+
+                <input
+                    type="text"
+                    id="taskInput"
+                    placeholder="Enter task"
+                    autocomplete="off"
+                >
+
+
+                <input
+                    type="time"
+                    id="taskTime"
+                >
+
+
+                <button
+                    type="button"
+                    onclick="addTask()"
+                >
+                    Add Task
+                </button>
+
+
+                <h4>
+                    Today's Tasks
+                </h4>
+
+
+                <ul id="taskList"></ul>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 STUDY CHAT
+            =================================================== -->
+
+            <div class="card">
+
+                <h3>
+                    💬 Study Chat
+                </h3>
+
+
+                <p>
+                    Share messages and discuss exam preparation.
+                </p>
+
+
+                <input
+                    type="text"
+                    id="chatUser"
+                    placeholder="Your Name"
+                    autocomplete="off"
+                >
+
+
+                <input
+                    type="text"
+                    id="chatMessage"
+                    placeholder="Type your message"
+                    autocomplete="off"
+                >
+
+
+                <button
+                    type="button"
+                    onclick="sendMessage()"
+                >
+                    Send Message
+                </button>
+
+
+                <h4>
+                    Messages
+                </h4>
+
+
+                <ul id="chatList"></ul>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 RESUME MAKER
+            =================================================== -->
+
+            <div
+                class="card"
+                id="resume"
+            >
+
+                <h3>
+                    📄 Resume Maker
+                </h3>
+
+
+                <p>
+                    Create a simple student resume using your details.
+                </p>
+
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Full Name"
+                    autocomplete="name"
+                >
+
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Email"
+                    autocomplete="email"
+                >
+
+
+                <input
+                    type="text"
+                    id="phone"
+                    placeholder="Phone Number"
+                    autocomplete="tel"
+                >
+
+
+                <textarea
+                    id="education"
+                    placeholder="Education"
+                ></textarea>
+
+
+                <textarea
+                    id="skills"
+                    placeholder="Skills (comma separated)"
+                ></textarea>
+
+
+                <textarea
+                    id="experience"
+                    placeholder="Experience / Projects"
+                ></textarea>
+
+
+                <button
+                    type="button"
+                    onclick="generateResume()"
+                >
+                    Generate Resume
+                </button>
+
+
+                <h4>
+                    Your Resume
+                </h4>
+
+
+                <div
+                    id="resumeOutput"
+                    class="resume"
+                ></div>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 SUMMARY MAKER
+            =================================================== -->
+
+            <div class="card">
+
+                <h3>
+                    ✂️ Summary Maker
+                </h3>
+
+
+                <p>
+                    Quickly summarize your study notes.
+                </p>
+
+
+                <textarea
+                    id="summaryInput"
+                    placeholder="Paste or type your notes here..."
+                ></textarea>
+
+
+                <button
+                    type="button"
+                    onclick="generateSummary()"
+                >
+                    Generate Summary
+                </button>
+
+
+                <h4>
+                    Summary
+                </h4>
+
+
+                <div
+                    id="summaryOutput"
+                ></div>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 AI STUDY PLANNER
+            =================================================== -->
+
+            <div
+                class="card ai-card"
+            >
+
+                <h3>
+                    🤖 AI Study Planner
+                </h3>
+
+
+                <p>
+                    Get a personalized study recommendation based on your study performance.
+                </p>
+
+
+                <!-- Subject -->
+
+                <input
+                    type="text"
+                    id="aiSubject"
+                    placeholder="Enter subject"
+                    autocomplete="off"
+                >
+
+
+                <!-- Difficulty -->
+
+                <input
+                    type="number"
+                    id="aiDifficulty"
+                    min="1"
+                    max="5"
+                    placeholder="Difficulty (1-5)"
+                >
+
+
+                <!-- Previous Score -->
+
+                <input
+                    type="number"
+                    id="aiScore"
+                    min="0"
+                    max="100"
+                    placeholder="Previous Score (%)"
+                >
+
+
+                <!-- Available Hours -->
+
+                <input
+                    type="number"
+                    id="aiHours"
+                    min="1"
+                    max="12"
+                    placeholder="Available Study Hours"
+                >
+
+
+                <!-- AI Button -->
+
+                <button
+                    type="button"
+                    onclick="generateAIRecommendation()"
+                >
+                    🤖 Generate Recommendation
+                </button>
+
+
+                <!-- AI Result -->
+
+                <div
+                    id="aiRecommendation"
+                ></div>
+
+
+                <!-- AI History Button -->
+
+                <button
+                    type="button"
+                    onclick="showAIHistory()"
+                    style="margin-top:10px;"
+                >
+                    📊 View AI History
+                </button>
+
+
+                <!-- AI History -->
+
+                <div
+                    id="aiHistory"
+                ></div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    =================================================== -->
+
+
+    <!-- Main JavaScript -->
+
+    <script
+        src="script.js?v=2"
+    ></script>
+
+
+    <!-- AI JavaScript -->
+
+    <script
+        src="ai.js?v=2"
+    ></script>
+
+
+</body>
+
+</html>
