@@ -1,56 +1,17 @@
-// ================================
-// EduBuddy AI Study Recommendation
-// ================================
+// ==========================================
+// EduBuddy AI Study Planner
+// Python AIML Backend Integration
+// ==========================================
 
-// This is a small browser-based ML model.
-// It learns a simple relationship between:
-// difficulty + previous score + available hours
-// and recommends study priority.
-
-// -------------------------------
-// Training data
-// -------------------------------
-
-const trainingData = [
-    { difficulty: 1, score: 90, hours: 1, priority: 1 },
-    { difficulty: 1, score: 80, hours: 2, priority: 1 },
-    { difficulty: 2, score: 80, hours: 2, priority: 2 },
-    { difficulty: 2, score: 70, hours: 2, priority: 3 },
-    { difficulty: 3, score: 70, hours: 3, priority: 3 },
-    { difficulty: 3, score: 60, hours: 3, priority: 4 },
-    { difficulty: 4, score: 60, hours: 4, priority: 4 },
-    { difficulty: 4, score: 50, hours: 4, priority: 5 },
-    { difficulty: 5, score: 40, hours: 5, priority: 5 },
-    { difficulty: 5, score: 30, hours: 5, priority: 5 }
-];
+// Backend URL
+const API_BASE_URL = "http://127.0.0.1:5000";
 
 
-// -------------------------------
-// Simple ML model
-// -------------------------------
+// ==========================================
+// GENERATE AI RECOMMENDATION
+// ==========================================
 
-function predictStudyPriority(difficulty, score, hours) {
-
-    // Normalize values
-    const difficultyValue = difficulty / 5;
-    const scoreValue = (100 - score) / 100;
-    const hoursValue = hours / 6;
-
-    // Weighted prediction
-    const prediction =
-        (difficultyValue * 0.45) +
-        (scoreValue * 0.40) +
-        (hoursValue * 0.15);
-
-    return prediction;
-}
-
-
-// -------------------------------
-// Generate recommendation
-// -------------------------------
-
-function generateAIRecommendation() {
+async function generateAIRecommendation() {
 
     const subject =
         document.getElementById("aiSubject").value.trim();
@@ -68,207 +29,353 @@ function generateAIRecommendation() {
         document.getElementById("aiRecommendation");
 
 
-    // Validation
+    // ==========================================
+    // VALIDATION
+    // ==========================================
+
     if (!subject) {
+
         output.innerHTML =
             "⚠️ Please enter a subject.";
+
         return;
     }
+
 
     if (!difficulty || difficulty < 1 || difficulty > 5) {
+
         output.innerHTML =
             "⚠️ Difficulty must be between 1 and 5.";
+
         return;
     }
+
 
     if (score < 0 || score > 100) {
+
         output.innerHTML =
-            "⚠️ Score must be between 0 and 100.";
+            "⚠️ Previous score must be between 0 and 100.";
+
         return;
     }
+
 
     if (!hours || hours <= 0) {
+
         output.innerHTML =
             "⚠️ Please enter available study hours.";
+
         return;
     }
 
 
-    // Run prediction
-    const prediction =
-        predictStudyPriority(
-            difficulty,
-            score,
-            hours
-        );
+    // ==========================================
+    // LOADING MESSAGE
+    // ==========================================
 
-
-    // Convert prediction into recommendation
-    let priority;
-    let recommendedHours;
-    let message;
-
-
-    if (prediction >= 0.75) {
-
-        priority = "HIGH";
-
-        recommendedHours =
-            Math.max(2, Math.round(hours * 0.65));
-
-        message =
-            "This subject needs strong attention.";
-
-    }
-    else if (prediction >= 0.50) {
-
-        priority = "MEDIUM";
-
-        recommendedHours =
-            Math.max(1, Math.round(hours * 0.40));
-
-        message =
-            "This subject needs regular practice.";
-
-    }
-    else {
-
-        priority = "LOW";
-
-        recommendedHours =
-            Math.max(1, Math.round(hours * 0.20));
-
-        message =
-            "Basic revision should be sufficient.";
-
-    }
-
-
-    // Display result
     output.innerHTML = `
         <div class="ai-result">
-
-            <h4>🤖 AI Study Recommendation</h4>
-
-            <p>
-                <strong>Subject:</strong>
-                ${subject}
-            </p>
-
-            <p>
-                <strong>Priority:</strong>
-                ${priority}
-            </p>
-
-            <p>
-                <strong>Recommended Study Time:</strong>
-                ${recommendedHours} hour(s)
-            </p>
-
-            <p>
-                ${message}
-            </p>
-
+            <h4>🤖 AI is analyzing...</h4>
+            <p>Please wait...</p>
         </div>
     `;
 
 
-    // Save recommendation locally
-    const recommendation = {
+    // ==========================================
+    // SEND DATA TO PYTHON AI BACKEND
+    // ==========================================
 
-        subject: subject,
+    try {
 
-        difficulty: difficulty,
+        const response = await fetch(
+            `${API_BASE_URL}/api/ai/predict`,
+            {
+                method: "POST",
 
-        score: score,
+                headers: {
+                    "Content-Type": "application/json"
+                },
 
-        availableHours: hours,
+                body: JSON.stringify({
 
-        priority: priority,
+                    difficulty: difficulty,
 
-        recommendedHours: recommendedHours,
+                    previous_score: score,
 
-        date: new Date().toLocaleString()
+                    available_hours: hours
 
-    };
-
-
-    let history =
-        JSON.parse(
-            localStorage.getItem("aiStudyHistory")
-        ) || [];
-
-
-    history.push(recommendation);
+                })
+            }
+        );
 
 
-    localStorage.setItem(
-        "aiStudyHistory",
-        JSON.stringify(history)
-    );
+        const result = await response.json();
+
+
+        // ==========================================
+        // BACKEND ERROR
+        // ==========================================
+
+        if (!response.ok || !result.success) {
+
+            output.innerHTML = `
+                <div class="ai-result">
+                    <h4>⚠️ AI Error</h4>
+                    <p>${result.message || "AI prediction failed."}</p>
+                </div>
+            `;
+
+            return;
+        }
+
+
+        // ==========================================
+        // AI RESULT
+        // ==========================================
+
+        const priority =
+            result.priority;
+
+        const recommendedHours =
+            result.recommended_hours;
+
+
+        let message = "";
+
+
+        if (priority === "HIGH") {
+
+            message =
+                "This subject needs strong attention and regular practice.";
+
+        }
+
+        else if (priority === "MEDIUM") {
+
+            message =
+                "This subject needs regular study and practice.";
+
+        }
+
+        else {
+
+            message =
+                "Basic revision and practice should be sufficient.";
+
+        }
+
+
+        // ==========================================
+        // DISPLAY RESULT
+        // ==========================================
+
+        output.innerHTML = `
+
+            <div class="ai-result">
+
+                <h4>🤖 AI Study Recommendation</h4>
+
+                <p>
+                    <strong>Subject:</strong>
+                    ${subject}
+                </p>
+
+                <p>
+                    <strong>Priority:</strong>
+                    ${priority}
+                </p>
+
+                <p>
+                    <strong>Recommended Study Time:</strong>
+                    ${recommendedHours} hour(s)
+                </p>
+
+                <p>
+                    ${message}
+                </p>
+
+            </div>
+
+        `;
+
+
+        // ==========================================
+        // SAVE AI HISTORY
+        // ==========================================
+
+        await saveAIHistory({
+
+            subject: subject,
+
+            difficulty: difficulty,
+
+            score: score,
+
+            availableHours: hours,
+
+            priority: priority,
+
+            recommendedHours: recommendedHours
+
+        });
+
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "AI Backend Error:",
+            error
+        );
+
+
+        output.innerHTML = `
+
+            <div class="ai-result">
+
+                <h4>⚠️ Backend Connection Error</h4>
+
+                <p>
+                    Unable to connect to EduBuddy AI server.
+                </p>
+
+                <p>
+                    Please make sure Flask backend is running.
+                </p>
+
+            </div>
+
+        `;
+    }
 }
 
 
-// -------------------------------
-// Show AI history
-// -------------------------------
 
-function showAIHistory() {
+// ==========================================
+// SAVE AI HISTORY
+// ==========================================
 
-    const history =
-        JSON.parse(
-            localStorage.getItem("aiStudyHistory")
-        ) || [];
+async function saveAIHistory(data) {
+
+    try {
+
+        await fetch(
+            `${API_BASE_URL}/api/ai/history`,
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(data)
+            }
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "AI history save error:",
+            error
+        );
+    }
+}
+
+
+
+// ==========================================
+// SHOW AI HISTORY
+// ==========================================
+
+async function showAIHistory() {
 
     const output =
         document.getElementById("aiHistory");
 
 
-    if (history.length === 0) {
+    output.innerHTML = `
+        <p>Loading AI history...</p>
+    `;
+
+
+    try {
+
+        const response = await fetch(
+            `${API_BASE_URL}/api/ai/history`
+        );
+
+
+        const history =
+            await response.json();
+
+
+        if (!history || history.length === 0) {
+
+            output.innerHTML =
+                "<p>No AI recommendations yet.</p>";
+
+            return;
+        }
+
 
         output.innerHTML =
-            "<p>No AI recommendations yet.</p>";
-
-        return;
-    }
+            "<h4>Previous AI Recommendations</h4>";
 
 
-    output.innerHTML = "<h4>Previous Recommendations</h4>";
+        history.forEach(item => {
+
+            const div =
+                document.createElement("div");
 
 
-    history
-        .slice(-5)
-        .reverse()
-        .forEach(item => {
+            div.className =
+                "ai-history-item";
 
-            output.innerHTML += `
 
-                <div class="ai-history-item">
+            div.innerHTML = `
 
-                    <strong>
-                        ${item.subject}
-                    </strong>
+                <strong>
+                    ${item.subject}
+                </strong>
 
-                    <br>
+                <br>
 
-                    Priority:
-                    ${item.priority}
+                Priority:
+                ${item.priority}
 
-                    <br>
+                <br>
 
-                    Recommended:
-                    ${item.recommendedHours}
-                    hour(s)
+                Recommended:
+                ${item.recommended_hours}
+                hour(s)
 
-                    <br>
+                <br>
 
-                    <small>
-                        ${item.date}
-                    </small>
-
-                </div>
+                <small>
+                    ${item.created_at}
+                </small>
 
             `;
 
+
+            output.appendChild(div);
+
         });
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "AI history error:",
+            error
+        );
+
+
+        output.innerHTML =
+            "<p>⚠️ Unable to load AI history.</p>";
+    }
 }
