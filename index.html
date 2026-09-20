@@ -1,382 +1,2217 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduBuddy | Student Learning Hub</title>
-    <link rel="stylesheet" href="./style.css?v=20260920">
+
+    <title>EduBuddy | Student Study Companion</title>
+
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
+
 <body>
 
-<!-- ================= HOME ================= -->
-<section class="welcome-screen" id="homeScreen">
-    <header class="home-navbar">
-        <div class="home-brand" onclick="goToWelcome()">
-            <div class="home-logo">E</div>
-            <span>Edu<span>Buddy</span></span>
-        </div>
+    <!-- =====================================================
+         WELCOME SCREEN
+    ====================================================== -->
 
-        <nav class="home-nav-links">
-            <a href="#home" onclick="goToWelcome(); return false;">Home</a>
-            <a href="#tools" onclick="startDashboard(); return false;">Tools</a>
-            <a href="#about" onclick="showHomeFeatures(); return false;">About</a>
-        </nav>
+    <section id="welcomeScreen" class="welcome-screen">
 
-        <button class="home-login-btn" onclick="startDashboard()">Get Started</button>
-    </header>
+        <div class="hero-grid"></div>
+        <div class="hero-orb hero-orb-one"></div>
+        <div class="hero-orb hero-orb-two"></div>
 
-    <div class="home-grid"></div>
-    <div class="home-glow glow-1"></div>
-    <div class="home-glow glow-2"></div>
+        <div class="welcome-content">
 
-    <div class="home-hero">
-        <div class="home-hero-content">
-            <div class="home-badge"><span class="pulse-dot"></span> Your personal student workspace</div>
+            <!-- LOGO -->
+            <div class="brand-logo">
 
-            <h1>Study smarter.<br><span>Stay ahead.</span></h1>
+                <div class="brand-icon">
+                    <svg viewBox="0 0 48 48" fill="none">
+                        <rect x="5" y="7" width="38" height="34" rx="10"
+                            stroke="currentColor" stroke-width="2.5" />
 
-            <p class="home-description">
-                Organize your notes, plan your routine, chat with classmates,
-                build your resume and use AI-powered study tools — all in one place.
+                        <path d="M14 17.5C14 16.67 14.67 16 15.5 16H23V32H15.5C14.67 32 14 31.33 14 30.5V17.5Z"
+                            fill="currentColor" opacity=".25" />
+
+                        <path d="M34 17.5C34 16.67 33.33 16 32.5 16H25V32H32.5C33.33 32 34 31.33 34 30.5V17.5Z"
+                            fill="currentColor" opacity=".25" />
+
+                        <path d="M24 16V32"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                            stroke-linecap="round" />
+                    </svg>
+                </div>
+
+                <div class="brand-name">
+                    <span>Edu</span>Buddy
+                </div>
+
+            </div>
+
+
+            <!-- HERO BADGE -->
+
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Your personal study companion
+            </div>
+
+
+            <!-- HERO HEADING -->
+
+            <h1>
+                Study smarter.<br>
+                <span>Stay ahead.</span>
+            </h1>
+
+
+            <p class="welcome-description">
+                Organize your studies, manage your routine, create notes
+                and get AI-powered study guidance — all in one place.
             </p>
 
-            <div class="home-buttons">
-                <button class="home-primary-btn" onclick="startDashboard()">
-                    Get Started <span>→</span>
-                </button>
-                <button class="home-secondary-btn" onclick="showHomeFeatures()">
-                    Explore EduBuddy
-                </button>
-            </div>
 
-            <div class="home-mini-features" id="about">
-                <div class="mini-feature">
-                    <div class="mini-icon blue">✦</div>
-                    <div><strong>Smart Notes</strong><small>Keep ideas organized</small></div>
-                </div>
-                <div class="mini-feature">
-                    <div class="mini-icon purple">◷</div>
-                    <div><strong>Study Routine</strong><small>Plan your day</small></div>
-                </div>
-                <div class="mini-feature">
-                    <div class="mini-icon cyan">AI</div>
-                    <div><strong>AI Planner</strong><small>Study with guidance</small></div>
-                </div>
-            </div>
-        </div>
+            <!-- BUTTON -->
 
-        <div class="home-visual">
-            <div class="floating-card card-notes">
-                <div class="floating-icon">📝</div>
-                <div><strong>Better Notes</strong><small>Stay organized</small></div>
-            </div>
+            <button class="get-started-btn" onclick="startDashboard()">
 
-            <div class="floating-card card-ai">
-                <div class="ai-face">
-                    <div class="ai-eyes"><i></i><i></i></div>
-                    <div class="ai-mouth"></div>
-                </div>
-                <div><strong>AI Assistant</strong><small>Ready to help</small></div>
-            </div>
+                <span>Get Started</span>
 
-            <div class="floating-card card-progress">
-                <div class="progress-top"><strong>Weekly Progress</strong><span>82%</span></div>
-                <div class="progress-bar"><span></span></div>
-            </div>
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M5 12H19"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round" />
 
-            <div class="student-scene">
-                <div class="scene-glow"></div>
-                <div class="grad-cap"><div class="cap-top"></div><div class="cap-base"></div><div class="cap-tassel"></div></div>
+                    <path d="M13 6L19 12L13 18"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
 
-                <div class="book-stack">
-                    <div class="book book-1"></div>
-                    <div class="book book-2"></div>
-                    <div class="book book-3"></div>
-                </div>
-
-                <div class="laptop">
-                    <div class="laptop-screen"><span>EB</span></div>
-                    <div class="laptop-base"></div>
-                </div>
-
-                <div class="plant">
-                    <i class="leaf leaf-1"></i><i class="leaf leaf-2"></i><i class="leaf leaf-3"></i>
-                    <div class="plant-pot"></div>
-                </div>
-
-                <div class="student">
-                    <div class="head"></div><div class="hair"></div>
-                    <div class="body"></div><div class="arm arm-left"></div><div class="arm arm-right"></div>
-                </div>
-
-                <div class="robot">
-                    <div class="robot-head"><i class="robot-eye"></i><i class="robot-eye"></i><span class="robot-smile"></span></div>
-                    <div class="robot-body"></div>
-                    <div class="robot-arm left"></div><div class="robot-arm right"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="home-stats">
-        <div><strong>7+</strong><span>Student Tools</span></div>
-        <div><strong>24/7</strong><span>Study Workspace</span></div>
-        <div><strong>1</strong><span>Simple Dashboard</span></div>
-    </div>
-</section>
-
-
-<!-- ================= APP ================= -->
-<div id="app" class="app-layout" style="display:none;">
-
-    <aside class="sidebar">
-        <div class="sidebar-brand">
-            <div class="sidebar-logo">E</div>
-            <div>
-                <div class="sidebar-brand-name">EduBuddy</div>
-                <small>Student Workspace</small>
-            </div>
-        </div>
-
-        <div class="sidebar-section-title">MAIN</div>
-
-        <nav class="sidebar-nav">
-            <button class="nav-item active" onclick="showPage('dashboardPage', this)">
-                <span>⌂</span> Dashboard
             </button>
-            <button class="nav-item" onclick="showPage('notesPage', this)">
-                <span>▤</span> Notes
-            </button>
-            <button class="nav-item" onclick="showPage('routinePage', this)">
-                <span>◷</span> Routine
-            </button>
-            <button class="nav-item" onclick="showPage('chatPage', this)">
-                <span>◌</span> Study Chat
-            </button>
-        </nav>
-
-        <div class="sidebar-section-title">TOOLS</div>
-
-        <nav class="sidebar-nav">
-            <button class="nav-item" onclick="showPage('aiPage', this)">
-                <span>✦</span> AI Study Planner
-            </button>
-            <button class="nav-item" onclick="showPage('resumePage', this)">
-                <span>▣</span> Resume Maker
-            </button>
-            <button class="nav-item" onclick="showPage('summaryPage', this)">
-                <span>≡</span> Summary Maker
-            </button>
-        </nav>
-
-        <div class="sidebar-bottom">
-            <div class="sidebar-tip">
-                <span>💡</span>
-                <div><strong>Study tip</strong><small>Small progress every day.</small></div>
-            </div>
-            <button class="back-home-btn" onclick="goToWelcome()">← Back to Home</button>
-        </div>
-    </aside>
 
 
-    <main class="main-content">
-        <header class="topbar">
-            <div>
-                <div class="heading-label">EDUBUDDY</div>
-                <h2 id="pageTitle">Dashboard</h2>
-            </div>
-            <div class="topbar-right">
-                <span id="currentDate"></span>
-                <div class="user-profile">
-                    <div class="user-avatar">S</div>
-                    <div><strong>Student</strong><small>Learning mode</small></div>
-                </div>
-            </div>
-        </header>
+            <!-- FEATURE CARDS -->
 
+            <div class="welcome-features">
 
-        <!-- DASHBOARD -->
-        <section id="dashboardPage" class="page active-page">
-            <div class="page-heading">
-                <div><span>OVERVIEW</span><h1>Welcome back 👋</h1><p>Everything you need for your study day.</p></div>
-            </div>
+                <div class="welcome-feature">
 
-            <div class="stats-grid">
-                <div class="stat-card"><div class="stat-icon blue">📝</div><div><small>NOTES</small><strong id="notesCount">0</strong></div></div>
-                <div class="stat-card"><div class="stat-icon purple">◷</div><div><small>ROUTINE TASKS</small><strong id="tasksCount">0</strong></div></div>
-                <div class="stat-card"><div class="stat-icon cyan">✦</div><div><small>AI PLANNER</small><strong>Ready</strong></div></div>
-            </div>
+                    <div class="feature-icon blue-icon">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M5 4H19V20H5V4Z"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linejoin="round" />
 
-            <div class="dashboard-grid">
-                <div class="dashboard-card">
-                    <div class="card-header"><div><span class="card-label">QUICK START</span><h3>What do you want to do?</h3></div></div>
-                    <div class="quick-actions">
-                        <button onclick="showPage('notesPage')"><span class="quick-icon">📝</span><b>Write a Note</b><small>Save important study points</small></button>
-                        <button onclick="showPage('routinePage')"><span class="quick-icon">◷</span><b>Plan Routine</b><small>Create today's tasks</small></button>
-                        <button onclick="showPage('aiPage')"><span class="quick-icon">✦</span><b>Use AI Planner</b><small>Get a study recommendation</small></button>
-                        <button onclick="showPage('summaryPage')"><span class="quick-icon">≡</span><b>Make Summary</b><small>Shorten your notes</small></button>
-                    </div>
-                </div>
-
-                <div class="dashboard-card quote-card">
-                    <span class="card-label">TODAY'S MOTIVATION</span>
-                    <div class="quote-mark">“</div>
-                    <p id="quoteBox">Small progress every day leads to big results.</p>
-                </div>
-            </div>
-
-            <div class="ai-banner" onclick="showPage('aiPage')">
-                <div class="ai-banner-icon">✦</div>
-                <div><span>EDUBUDDY AI</span><h3>Build a study plan around your current progress.</h3><p>Enter your subject, difficulty, score and available hours.</p></div>
-                <b>Open Planner →</b>
-            </div>
-        </section>
-
-
-        <!-- NOTES -->
-        <section id="notesPage" class="page">
-            <div class="page-heading"><div><span>STUDY TOOL</span><h1>Smart Notes</h1><p>Save and manage your study notes.</p></div></div>
-
-            <div class="feature-layout">
-                <div class="feature-card">
-                    <div class="feature-card-header"><h3>Create a note</h3><span>📝</span></div>
-                    <textarea id="noteInput" placeholder="Write your study note here..."></textarea>
-                    <button class="primary-btn" onclick="saveNote()">Save Note <span>→</span></button>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-card-header"><h3>Saved Notes</h3><span>▤</span></div>
-                    <div id="notesList" class="notes-list"></div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- ROUTINE -->
-        <section id="routinePage" class="page">
-            <div class="page-heading"><div><span>PLANNING TOOL</span><h1>Study Routine</h1><p>Build a simple study schedule.</p></div></div>
-
-            <div class="feature-layout">
-                <div class="feature-card">
-                    <div class="feature-card-header"><h3>Add study task</h3><span>◷</span></div>
-                    <div class="form-group"><label>Task</label><input id="taskInput" type="text" placeholder="e.g. Study Machine Learning"></div>
-                    <div class="form-group"><label>Time</label><input id="taskTime" type="time"></div>
-                    <button class="primary-btn" onclick="addTask()">Add to Routine <span>→</span></button>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-card-header"><h3>Today's Routine</h3><span>📅</span></div>
-                    <div id="taskList" class="task-list"></div>
-                </div>
-            </div>
-
-            <div class="feature-card reminder-card">
-                <div class="feature-card-header"><h3>Quick Reminder</h3><span>🔔</span></div>
-                <div class="reminder-row">
-                    <input id="subject" type="text" placeholder="Subject">
-                    <input id="time" type="time">
-                    <button class="primary-btn" onclick="setReminder()">Set Reminder</button>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- CHAT -->
-        <section id="chatPage" class="page">
-            <div class="page-heading"><div><span>COLLABORATION</span><h1>Study Chat</h1><p>Share questions and study messages.</p></div></div>
-
-            <div class="chat-container">
-                <div id="chatList" class="chat-list"></div>
-                <div class="chat-input-area">
-                    <input id="chatUser" type="text" placeholder="Your name">
-                    <input id="chatMessage" type="text" placeholder="Write a study message...">
-                    <button class="primary-btn" onclick="sendMessage()">Send</button>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- AI -->
-        <section id="aiPage" class="page">
-            <div class="page-heading"><div><span>AI TOOL</span><h1>AI Study Planner</h1><p>Generate a study recommendation from your current situation.</p></div></div>
-
-            <div class="ai-layout">
-                <div class="feature-card">
-                    <div class="feature-card-header"><h3>Study information</h3><span>✦</span></div>
-
-                    <div class="form-group"><label>Subject</label><input id="aiSubject" type="text" placeholder="e.g. Machine Learning"></div>
-
-                    <div class="form-group"><label>Difficulty</label>
-                        <select id="aiDifficulty">
-                            <option value="Easy">Easy</option>
-                            <option value="Medium" selected>Medium</option>
-                            <option value="Hard">Hard</option>
-                        </select>
+                            <path d="M8 8H16M8 12H16M8 16H13"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round" />
+                        </svg>
                     </div>
 
-                    <div class="form-group"><label>Current Score (%)</label><input id="aiScore" type="number" min="0" max="100" placeholder="e.g. 65"></div>
+                    <div>
+                        <strong>Smart Notes</strong>
+                        <span>Keep your ideas organized</span>
+                    </div>
 
-                    <div class="form-group"><label>Available Hours</label><input id="aiHours" type="number" min="1" max="24" placeholder="e.g. 3"></div>
-
-                    <button class="primary-btn" onclick="generateAIPlan()">Generate Plan <span>✦</span></button>
                 </div>
 
-                <div class="feature-card">
-                    <div class="feature-card-header"><h3>Recommendation</h3><span>💡</span></div>
-                    <div id="aiRecommendation" class="ai-recommendation"><div class="ai-placeholder"><div class="ai-mini-icon">✦</div><h3>Your study plan will appear here</h3><p>Fill in the details and click Generate Plan.</p></div></div>
+
+                <div class="welcome-feature">
+
+                    <div class="feature-icon purple-icon">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="8"
+                                stroke="currentColor"
+                                stroke-width="1.8" />
+
+                            <path d="M12 7V12L15 14"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round" />
+                        </svg>
+                    </div>
+
+                    <div>
+                        <strong>Study Routine</strong>
+                        <span>Plan your day better</span>
+                    </div>
+
                 </div>
+
+
+                <div class="welcome-feature">
+
+                    <div class="feature-icon cyan-icon">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M12 3L13.8 8.2L19 10L13.8 11.8L12 17L10.2 11.8L5 10L10.2 8.2L12 3Z"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                                stroke-linejoin="round" />
+
+                            <path d="M18 16L18.8 18.2L21 19L18.8 19.8L18 22L17.2 19.8L15 19L17.2 18.2L18 16Z"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+
+                    <div>
+                        <strong>AI Planner</strong>
+                        <span>Get personalized guidance</span>
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="feature-card history-card">
-                <div class="feature-card-header"><h3>AI History</h3><span>↺</span></div>
-                <div id="aiHistory" class="ai-history"></div>
+        </div>
+
+
+        <!-- DASHBOARD PREVIEW -->
+
+        <div class="hero-preview">
+
+            <div class="preview-window">
+
+                <!-- PREVIEW TOP BAR -->
+
+                <div class="preview-topbar">
+
+                    <div class="preview-brand">
+
+                        <div class="preview-logo">
+                            EB
+                        </div>
+
+                        <span>EduBuddy</span>
+
+                    </div>
+
+                    <div class="preview-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                </div>
+
+
+                <!-- PREVIEW BODY -->
+
+                <div class="preview-body">
+
+                    <div class="preview-sidebar">
+
+                        <div class="preview-side-line active"></div>
+                        <div class="preview-side-line"></div>
+                        <div class="preview-side-line"></div>
+                        <div class="preview-side-line"></div>
+                        <div class="preview-side-line"></div>
+
+                    </div>
+
+
+                    <div class="preview-main">
+
+                        <div class="preview-heading">
+
+                            <div>
+                                <small>GOOD MORNING</small>
+                                <strong>Welcome back 👋</strong>
+                            </div>
+
+                            <div class="preview-avatar">
+                                S
+                            </div>
+
+                        </div>
+
+
+                        <div class="preview-stats">
+
+                            <div class="preview-stat">
+                                <span></span>
+                                <div>
+                                    <small>Notes</small>
+                                    <strong>24</strong>
+                                </div>
+                            </div>
+
+                            <div class="preview-stat">
+                                <span></span>
+                                <div>
+                                    <small>Tasks</small>
+                                    <strong>08</strong>
+                                </div>
+                            </div>
+
+                            <div class="preview-stat">
+                                <span></span>
+                                <div>
+                                    <small>Streak</small>
+                                    <strong>12d</strong>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="preview-cards">
+
+                            <div class="preview-card large">
+
+                                <div class="fake-title"></div>
+
+                                <div class="fake-chart">
+                                    <span style="height:35%"></span>
+                                    <span style="height:55%"></span>
+                                    <span style="height:45%"></span>
+                                    <span style="height:75%"></span>
+                                    <span style="height:60%"></span>
+                                    <span style="height:90%"></span>
+                                    <span style="height:72%"></span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="preview-card">
+
+                                <div class="fake-title short"></div>
+
+                                <div class="fake-list">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
-        </section>
+
+        </div>
+
+    </section>
 
 
-        <!-- RESUME -->
-        <section id="resumePage" class="page">
-            <div class="page-heading"><div><span>CAREER TOOL</span><h1>Resume Maker</h1><p>Create a clean student resume preview.</p></div></div>
 
-            <div class="resume-layout">
-                <div class="feature-card">
-                    <div class="form-group"><label>Full Name</label><input id="name" placeholder="Your name"></div>
-                    <div class="form-group"><label>Email</label><input id="email" type="email" placeholder="you@example.com"></div>
-                    <div class="form-group"><label>Phone</label><input id="phone" placeholder="+91..."></div>
-                    <div class="form-group"><label>Education</label><textarea id="education" placeholder="B.Tech AIML, College, University..."></textarea></div>
-                    <div class="form-group"><label>Skills</label><input id="skills" placeholder="Python, ML, HTML, CSS"></div>
-                    <div class="form-group"><label>Experience / Projects</label><textarea id="experience" placeholder="Projects, internships, achievements..."></textarea></div>
-                    <button class="primary-btn" onclick="generateResume()">Generate Resume <span>→</span></button>
+    <!-- =====================================================
+         MAIN APPLICATION
+    ====================================================== -->
+
+    <div id="app" class="app-layout" style="display:none;">
+
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside class="sidebar">
+
+            <!-- SIDEBAR BRAND -->
+
+            <div class="sidebar-brand">
+
+                <div class="sidebar-logo">
+
+                    <svg viewBox="0 0 48 48" fill="none">
+
+                        <rect x="5" y="7" width="38" height="34" rx="10"
+                            stroke="currentColor"
+                            stroke-width="2.5" />
+
+                        <path d="M14 17.5C14 16.67 14.67 16 15.5 16H23V32H15.5C14.67 32 14 31.33 14 30.5V17.5Z"
+                            fill="currentColor"
+                            opacity=".25" />
+
+                        <path d="M34 17.5C34 16.67 33.33 16 32.5 16H25V32H32.5C33.33 32 34 31.33 34 30.5V17.5Z"
+                            fill="currentColor"
+                            opacity=".25" />
+
+                        <path d="M24 16V32"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                            stroke-linecap="round" />
+
+                    </svg>
+
                 </div>
 
-                <div id="resumeOutput" class="resume-output">
-                    <div class="resume-placeholder"><div>▣</div><h3>Resume Preview</h3><p>Fill the form to generate your resume.</p></div>
+                <div class="sidebar-brand-name">
+                    <span>Edu</span>Buddy
                 </div>
+
             </div>
-        </section>
 
 
-        <!-- SUMMARY -->
-        <section id="summaryPage" class="page">
-            <div class="page-heading"><div><span>STUDY TOOL</span><h1>Summary Maker</h1><p>Turn long study notes into a shorter summary.</p></div></div>
+            <!-- NAVIGATION -->
 
-            <div class="summary-layout">
-                <div class="feature-card">
-                    <div class="feature-card-header"><h3>Your notes</h3><span>≡</span></div>
-                    <textarea id="summaryInput" placeholder="Paste or type your study material here..."></textarea>
-                    <button class="primary-btn" onclick="generateSummary()">Generate Summary <span>→</span></button>
-                </div>
-
-                <div id="summaryOutput" class="feature-card summary-output">
-                    <div class="summary-placeholder"><div>✦</div><h3>Your summary appears here</h3><p>Add some notes and generate a summary.</p></div>
-                </div>
+            <div class="sidebar-section-title">
+                WORKSPACE
             </div>
-        </section>
 
-    </main>
-</div>
 
-<script src="./script.js?v=20260920"></script>
-<script src="./ai.js?v=20260920"></script>
+            <nav class="sidebar-nav">
+
+
+                <!-- DASHBOARD -->
+
+                <button class="nav-item active"
+                    onclick="showPage('dashboardPage', this)">
+
+                    <svg viewBox="0 0 24 24" fill="none">
+
+                        <rect x="4" y="4" width="6" height="6" rx="1.2"
+                            stroke="currentColor"
+                            stroke-width="1.8" />
+
+                        <rect x="14" y="4" width="6" height="6" rx="1.2"
+                            stroke="currentColor"
+                            stroke-width="1.8" />
+
+                        <rect x="4" y="14" width="6" height="6" rx="1.2"
+                            stroke="currentColor"
+                            stroke-width="1.8" />
+
+                        <rect x="14" y="14" width="6" height="6" rx="1.2"
+                            stroke="currentColor"
+                            stroke-width="1.8" />
+
+                    </svg>
+
+                    <span>Dashboard</span>
+
+                </button>
+
+
+                <!-- NOTES -->
+
+                <button class="nav-item"
+                    onclick="showPage('notesPage', this)">
+
+                    <svg viewBox="0 0 24 24" fill="none">
+
+                        <path d="M5 4H19V20H5V4Z"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linejoin="round" />
+
+                        <path d="M8 8H16M8 12H16M8 16H13"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round" />
+
+                    </svg>
+
+                    <span>Notes</span>
+
+                </button>
+
+
+                <!-- ROUTINE -->
+
+                <button class="nav-item"
+                    onclick="showPage('routinePage', this)">
+
+                    <svg viewBox="0 0 24 24" fill="none">
+
+                        <circle cx="12" cy="12" r="8"
+                            stroke="currentColor"
+                            stroke-width="1.8" />
+
+                        <path d="M12 7V12L15 14"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round" />
+
+                    </svg>
+
+                    <span>Routine</span>
+
+                </button>
+
+
+                <!-- STUDY CHAT -->
+
+                <button class="nav-item"
+                    onclick="showPage('chatPage', this)">
+
+                    <svg viewBox="0 0 24 24" fill="none">
+
+                        <path d="M5 5H19V16H13L9 20V16H5V5Z"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linejoin="round" />
+
+                        <path d="M8 9H16M8 12H13"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round" />
+
+                    </svg>
+
+                    <span>Study Chat</span>
+
+                </button>
+
+
+            </nav>
+
+
+            <!-- AI SECTION -->
+
+            <div class="sidebar-section-title">
+                AI TOOLS
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+
+                <!-- AI PLANNER -->
+
+                <button class="nav-item"
+                    onclick="showPage('aiPage', this)">
+
+                    <svg viewBox="0 0 24 24" fill="none">
+
+                        <path d="M12 3L13.8 8.2L19 10L13.8 11.8L12 17L10.2 11.8L5 10L10.2 8.2L12 3Z"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            stroke-linejoin="round" />
+
+                        <path d="M18 16L18.8 18.2L21 19L18.8 19.8L18 22L17.2 19.8L15 19L17.2 18.2L18 16Z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linejoin="round" />
+
+                    </svg>
+
+                    <span>AI Study Planner</span>
+
+                    <span class="nav-badge">AI</span>
+
+                </button>
+
+
+                <!-- RESUME -->
+
+                <button class="nav-item"
+                    onclick="showPage('resumePage', this)">
+
+                    <svg viewBox="0 0 24 24" fill="none">
+
+                        <path d="M6 3H14L19 8V21H6V3Z"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linejoin="round" />
+
+                        <path d="M14 3V8H19"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linejoin="round" />
+
+                        <path d="M9 13H16M9 17H14"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round" />
+
+                    </svg>
+
+                    <span>Resume Maker</span>
+
+                </button>
+
+
+                <!-- SUMMARY -->
+
+                <button class="nav-item"
+                    onclick="showPage('summaryPage', this)">
+
+                    <svg viewBox="0 0 24 24" fill="none">
+
+                        <path d="M5 4H19V20H5V4Z"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linejoin="round" />
+
+                        <path d="M8 8H16M8 12H16M8 16H13"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round" />
+
+                    </svg>
+
+                    <span>Summary Maker</span>
+
+                </button>
+
+
+            </nav>
+
+
+            <!-- SIDEBAR BOTTOM -->
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-tip">
+
+                    <div class="tip-icon">
+
+                        <svg viewBox="0 0 24 24" fill="none">
+
+                            <path d="M9 18H15"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round" />
+
+                            <path d="M10 21H14"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round" />
+
+                            <path d="M8 15C6.75 13.94 6 12.39 6 10.66C6 7.54 8.69 5 12 5C15.31 5 18 7.54 18 10.66C18 12.39 17.25 13.94 16 15C15.25 15.64 15 16.1 15 17H9C9 16.1 8.75 15.64 8 15Z"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linejoin="round" />
+
+                        </svg>
+
+                    </div>
+
+                    <div>
+                        <strong>Study tip</strong>
+                        <span>Small progress every day adds up.</span>
+                    </div>
+
+                </div>
+
+
+                <button class="back-home-btn" onclick="goToWelcome()">
+
+                    <svg viewBox="0 0 24 24" fill="none">
+
+                        <path d="M15 18L9 12L15 6"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            stroke-linejoin="round" />
+
+                    </svg>
+
+                    <span>Back to Home</span>
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- =================================================
+             MAIN CONTENT
+        ================================================== -->
+
+        <main class="main-content">
+
+
+            <!-- TOP BAR -->
+
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <div class="mobile-menu-icon">
+                        ☰
+                    </div>
+
+                    <div>
+                        <span class="topbar-label">EDUBUDDY</span>
+                        <h2 id="topbarTitle">Dashboard</h2>
+                    </div>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <div class="topbar-date" id="currentDate">
+                        Today
+                    </div>
+
+                    <div class="user-profile">
+
+                        <div class="user-avatar">
+                            S
+                        </div>
+
+                        <div class="user-info">
+                            <strong>Student</strong>
+                            <span>Keep learning</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- =================================================
+                 DASHBOARD PAGE
+            ================================================== -->
+
+            <section id="dashboardPage" class="page active-page">
+
+
+                <!-- PAGE HEADER -->
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span class="heading-label">
+                            STUDENT DASHBOARD
+                        </span>
+
+                        <h1>
+                            Welcome back, <span>Student</span> 👋
+                        </h1>
+
+                        <p>
+                            Here's what's happening with your studies today.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- STAT CARDS -->
+
+                <div class="stats-grid">
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon blue-stat">
+
+                            <svg viewBox="0 0 24 24" fill="none">
+
+                                <path d="M5 4H19V20H5V4Z"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linejoin="round" />
+
+                                <path d="M8 8H16M8 12H16M8 16H13"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round" />
+
+                            </svg>
+
+                        </div>
+
+                        <div class="stat-content">
+
+                            <span>Total Notes</span>
+
+                            <strong id="notesCount">
+                                0
+                            </strong>
+
+                            <small>Your saved study notes</small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon purple-stat">
+
+                            <svg viewBox="0 0 24 24" fill="none">
+
+                                <circle cx="12" cy="12" r="8"
+                                    stroke="currentColor"
+                                    stroke-width="1.8" />
+
+                                <path d="M12 7V12L15 14"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round" />
+
+                            </svg>
+
+                        </div>
+
+                        <div class="stat-content">
+
+                            <span>Today's Tasks</span>
+
+                            <strong id="tasksCount">
+                                0
+                            </strong>
+
+                            <small>Tasks in your routine</small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon cyan-stat">
+
+                            <svg viewBox="0 0 24 24" fill="none">
+
+                                <path d="M12 3L13.8 8.2L19 10L13.8 11.8L12 17L10.2 11.8L5 10L10.2 8.2L12 3Z"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"
+                                    stroke-linejoin="round" />
+
+                            </svg>
+
+                        </div>
+
+                        <div class="stat-content">
+
+                            <span>AI Planner</span>
+
+                            <strong>AI</strong>
+
+                            <small>Personalized study guidance</small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon green-stat">
+
+                            <svg viewBox="0 0 24 24" fill="none">
+
+                                <path d="M12 3L14.5 9.5L21 12L14.5 14.5L12 21L9.5 14.5L3 12L9.5 9.5L12 3Z"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"
+                                    stroke-linejoin="round" />
+
+                            </svg>
+
+                        </div>
+
+                        <div class="stat-content">
+
+                            <span>Productivity</span>
+
+                            <strong>Focus</strong>
+
+                            <small>Keep building your streak</small>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- DASHBOARD GRID -->
+
+                <div class="dashboard-grid">
+
+
+                    <!-- TODAY'S ROUTINE -->
+
+                    <div class="dashboard-card routine-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    TODAY
+                                </span>
+
+                                <h3>
+                                    Study Routine
+                                </h3>
+
+                            </div>
+
+                            <button class="text-btn"
+                                onclick="showPage('routinePage')">
+                                View all →
+                            </button>
+
+                        </div>
+
+
+                        <div id="dashboardTasks" class="dashboard-task-list">
+
+                            <div class="empty-dashboard">
+
+                                <div class="empty-icon">
+                                    ✓
+                                </div>
+
+                                <strong>
+                                    No tasks yet
+                                </strong>
+
+                                <span>
+                                    Add your study routine to see it here.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- QUICK ACTIONS -->
+
+                    <div class="dashboard-card quick-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    QUICK ACTIONS
+                                </span>
+
+                                <h3>
+                                    Start studying
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="quick-actions">
+
+                            <button onclick="showPage('notesPage')">
+
+                                <div class="quick-icon blue-stat">
+
+                                    <svg viewBox="0 0 24 24" fill="none">
+
+                                        <path d="M5 4H19V20H5V4Z"
+                                            stroke="currentColor"
+                                            stroke-width="1.8" />
+
+                                        <path d="M8 8H16M8 12H16"
+                                            stroke="currentColor"
+                                            stroke-width="1.8"
+                                            stroke-linecap="round" />
+
+                                    </svg>
+
+                                </div>
+
+                                <span>
+                                    Create Note
+                                </span>
+
+                                <b>→</b>
+
+                            </button>
+
+
+                            <button onclick="showPage('routinePage')">
+
+                                <div class="quick-icon purple-stat">
+
+                                    <svg viewBox="0 0 24 24" fill="none">
+
+                                        <circle cx="12" cy="12" r="8"
+                                            stroke="currentColor"
+                                            stroke-width="1.8" />
+
+                                        <path d="M12 7V12L15 14"
+                                            stroke="currentColor"
+                                            stroke-width="1.8"
+                                            stroke-linecap="round" />
+
+                                    </svg>
+
+                                </div>
+
+                                <span>
+                                    Add Routine
+                                </span>
+
+                                <b>→</b>
+
+                            </button>
+
+
+                            <button onclick="showPage('chatPage')">
+
+                                <div class="quick-icon cyan-stat">
+
+                                    <svg viewBox="0 0 24 24" fill="none">
+
+                                        <path d="M5 5H19V16H13L9 20V16H5V5Z"
+                                            stroke="currentColor"
+                                            stroke-width="1.8"
+                                            stroke-linejoin="round" />
+
+                                    </svg>
+
+                                </div>
+
+                                <span>
+                                    Ask Study Chat
+                                </span>
+
+                                <b>→</b>
+
+                            </button>
+
+
+                            <button onclick="showPage('aiPage')">
+
+                                <div class="quick-icon green-stat">
+
+                                    <svg viewBox="0 0 24 24" fill="none">
+
+                                        <path d="M12 3L13.8 8.2L19 10L13.8 11.8L12 17L10.2 11.8L5 10L10.2 8.2L12 3Z"
+                                            stroke="currentColor"
+                                            stroke-width="1.7" />
+
+                                    </svg>
+
+                                </div>
+
+                                <span>
+                                    AI Study Planner
+                                </span>
+
+                                <b>→</b>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- AI BANNER -->
+
+                <div class="ai-banner">
+
+                    <div class="ai-banner-icon">
+
+                        <svg viewBox="0 0 24 24" fill="none">
+
+                            <path d="M12 3L13.8 8.2L19 10L13.8 11.8L12 17L10.2 11.8L5 10L10.2 8.2L12 3Z"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                                stroke-linejoin="round" />
+
+                            <path d="M18 16L18.8 18.2L21 19L18.8 19.8L18 22L17.2 19.8L15 19L17.2 18.2L18 16Z"
+                                stroke="currentColor"
+                                stroke-width="1.5" />
+
+                        </svg>
+
+                    </div>
+
+
+                    <div class="ai-banner-content">
+
+                        <span>AI STUDY ASSISTANT</span>
+
+                        <h3>
+                            Not sure what to study next?
+                        </h3>
+
+                        <p>
+                            Tell EduBuddy your subject, difficulty and available
+                            time to get a personalized study recommendation.
+                        </p>
+
+                    </div>
+
+
+                    <button onclick="showPage('aiPage')">
+                        Try AI Planner →
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 NOTES PAGE
+            ================================================== -->
+
+            <section id="notesPage" class="page">
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span class="heading-label">
+                            STUDY NOTES
+                        </span>
+
+                        <h1>
+                            Your Notes
+                        </h1>
+
+                        <p>
+                            Save important concepts, ideas and study material.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature-layout">
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    NEW NOTE
+                                </span>
+
+                                <h3>
+                                    Create a study note
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Subject
+                            </label>
+
+                            <input
+                                type="text"
+                                id="subject"
+                                placeholder="e.g. Machine Learning">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Note
+                            </label>
+
+                            <textarea
+                                id="noteInput"
+                                rows="7"
+                                placeholder="Write your study note here..."></textarea>
+
+                        </div>
+
+
+                        <button class="primary-btn"
+                            onclick="addNote()">
+
+                            Save Note
+
+                        </button>
+
+                    </div>
+
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    SAVED NOTES
+                                </span>
+
+                                <h3>
+                                    Recent notes
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div id="notesList" class="notes-list">
+
+                            <div class="empty-state">
+
+                                <div class="empty-state-icon">
+                                    📝
+                                </div>
+
+                                <h3>
+                                    No notes yet
+                                </h3>
+
+                                <p>
+                                    Your saved notes will appear here.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 ROUTINE PAGE
+            ================================================== -->
+
+            <section id="routinePage" class="page">
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span class="heading-label">
+                            STUDY ROUTINE
+                        </span>
+
+                        <h1>
+                            Plan Your Day
+                        </h1>
+
+                        <p>
+                            Create a simple routine and stay consistent.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature-layout">
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    ADD TASK
+                                </span>
+
+                                <h3>
+                                    Create study task
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Task
+                            </label>
+
+                            <input
+                                type="text"
+                                id="taskInput"
+                                placeholder="e.g. Study Decision Trees">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Time
+                            </label>
+
+                            <input
+                                type="time"
+                                id="taskTime">
+
+                        </div>
+
+
+                        <button class="primary-btn"
+                            onclick="addTask()">
+
+                            Add to Routine
+
+                        </button>
+
+                    </div>
+
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    TODAY'S PLAN
+                                </span>
+
+                                <h3>
+                                    Your schedule
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div id="taskList" class="task-list">
+
+                            <div class="empty-state">
+
+                                <div class="empty-state-icon">
+                                    ⏰
+                                </div>
+
+                                <h3>
+                                    No tasks yet
+                                </h3>
+
+                                <p>
+                                    Add your first study task.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 STUDY CHAT PAGE
+            ================================================== -->
+
+            <section id="chatPage" class="page">
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span class="heading-label">
+                            STUDY ASSISTANT
+                        </span>
+
+                        <h1>
+                            Study Chat
+                        </h1>
+
+                        <p>
+                            Ask questions and discuss your study topics.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chat-container">
+
+
+                    <div id="chatList" class="chat-list">
+
+                        <div class="chat-welcome">
+
+                            <div class="chat-ai-icon">
+
+                                <svg viewBox="0 0 24 24" fill="none">
+
+                                    <path d="M12 3L13.8 8.2L19 10L13.8 11.8L12 17L10.2 11.8L5 10L10.2 8.2L12 3Z"
+                                        stroke="currentColor"
+                                        stroke-width="1.7" />
+
+                                </svg>
+
+                            </div>
+
+                            <h3>
+                                Hi! I'm your study assistant.
+                            </h3>
+
+                            <p>
+                                Ask me about concepts, revision,
+                                programming or your subjects.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="chat-input-area">
+
+                        <input
+                            type="text"
+                            id="chatUser"
+                            placeholder="Your name">
+
+                        <input
+                            type="text"
+                            id="chatMessage"
+                            placeholder="Ask your study question...">
+
+                        <button
+                            class="primary-btn"
+                            onclick="sendChat()">
+
+                            Send
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 AI STUDY PLANNER
+            ================================================== -->
+
+            <section id="aiPage" class="page">
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span class="heading-label">
+                            ARTIFICIAL INTELLIGENCE
+                        </span>
+
+                        <h1>
+                            AI Study Planner
+                        </h1>
+
+                        <p>
+                            Get a personalized study recommendation.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="ai-layout">
+
+
+                    <!-- INPUT -->
+
+                    <div class="feature-card ai-form-card">
+
+                        <div class="feature-card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    STUDY INPUT
+                                </span>
+
+                                <h3>
+                                    Tell us about your study
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Subject
+                            </label>
+
+                            <input
+                                type="text"
+                                id="aiSubject"
+                                placeholder="e.g. Machine Learning">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Difficulty
+                            </label>
+
+                            <select id="aiDifficulty">
+
+                                <option value="easy">
+                                    Easy
+                                </option>
+
+                                <option value="medium" selected>
+                                    Medium
+                                </option>
+
+                                <option value="hard">
+                                    Hard
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Current Score / Understanding
+                            </label>
+
+                            <input
+                                type="number"
+                                id="aiScore"
+                                min="0"
+                                max="100"
+                                placeholder="e.g. 65">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Available Study Hours
+                            </label>
+
+                            <input
+                                type="number"
+                                id="aiHours"
+                                min="1"
+                                max="24"
+                                placeholder="e.g. 3">
+
+                        </div>
+
+
+                        <button
+                            class="primary-btn"
+                            onclick="getAIRecommendation()">
+
+                            Generate Recommendation
+
+                        </button>
+
+                    </div>
+
+
+
+                    <!-- RESULT -->
+
+                    <div class="feature-card ai-result-card">
+
+                        <div class="feature-card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    AI RECOMMENDATION
+                                </span>
+
+                                <h3>
+                                    Your study guidance
+                                </h3>
+
+                            </div>
+
+                            <div class="ai-mini-icon">
+                                AI
+                            </div>
+
+                        </div>
+
+
+                        <div id="aiRecommendation"
+                            class="ai-recommendation">
+
+                            <div class="ai-placeholder">
+
+                                <div class="ai-placeholder-icon">
+
+                                    <svg viewBox="0 0 24 24" fill="none">
+
+                                        <path d="M12 3L13.8 8.2L19 10L13.8 11.8L12 17L10.2 11.8L5 10L10.2 8.2L12 3Z"
+                                            stroke="currentColor"
+                                            stroke-width="1.7" />
+
+                                    </svg>
+
+                                </div>
+
+                                <h3>
+                                    Your recommendation will appear here.
+                                </h3>
+
+                                <p>
+                                    Enter your study details and generate
+                                    an AI recommendation.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AI HISTORY -->
+
+                <div class="feature-card history-card">
+
+                    <div class="feature-card-header">
+
+                        <div>
+
+                            <span class="card-label">
+                                HISTORY
+                            </span>
+
+                            <h3>
+                                Previous recommendations
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="aiHistory">
+
+                        <div class="empty-state">
+
+                            <p>
+                                Your AI study history will appear here.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 RESUME MAKER
+            ================================================== -->
+
+            <section id="resumePage" class="page">
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span class="heading-label">
+                            CAREER TOOL
+                        </span>
+
+                        <h1>
+                            Resume Maker
+                        </h1>
+
+                        <p>
+                            Create a clean student resume.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="resume-layout">
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    YOUR DETAILS
+                                </span>
+
+                                <h3>
+                                    Resume information
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="Your name">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Email
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="you@example.com">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Phone
+                            </label>
+
+                            <input
+                                type="text"
+                                id="phone"
+                                placeholder="Your phone number">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Education
+                            </label>
+
+                            <textarea
+                                id="education"
+                                rows="3"
+                                placeholder="B.Tech AIML, College, University..."></textarea>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Skills
+                            </label>
+
+                            <textarea
+                                id="skills"
+                                rows="3"
+                                placeholder="Python, Machine Learning, HTML, CSS..."></textarea>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Experience / Projects
+                            </label>
+
+                            <textarea
+                                id="experience"
+                                rows="4"
+                                placeholder="Projects, internships or experience..."></textarea>
+
+                        </div>
+
+
+                        <button
+                            class="primary-btn"
+                            onclick="generateResume()">
+
+                            Generate Resume
+
+                        </button>
+
+                    </div>
+
+
+
+                    <div class="feature-card resume-preview-card">
+
+                        <div class="feature-card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    PREVIEW
+                                </span>
+
+                                <h3>
+                                    Your Resume
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div id="resumeOutput"
+                            class="resume-output">
+
+                            <div class="resume-placeholder">
+
+                                <div class="resume-placeholder-icon">
+                                    CV
+                                </div>
+
+                                <h3>
+                                    Resume preview
+                                </h3>
+
+                                <p>
+                                    Fill in your details and generate
+                                    your resume.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 SUMMARY MAKER
+            ================================================== -->
+
+            <section id="summaryPage" class="page">
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span class="heading-label">
+                            STUDY TOOL
+                        </span>
+
+                        <h1>
+                            Summary Maker
+                        </h1>
+
+                        <p>
+                            Turn long study material into quick revision notes.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="summary-layout">
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    SOURCE MATERIAL
+                                </span>
+
+                                <h3>
+                                    Enter your content
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <textarea
+                                id="summaryInput"
+                                class="summary-textarea"
+                                rows="16"
+                                placeholder="Paste your study material here..."></textarea>
+
+                        </div>
+
+
+                        <button
+                            class="primary-btn"
+                            onclick="generateSummary()">
+
+                            Generate Summary
+
+                        </button>
+
+                    </div>
+
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    OUTPUT
+                                </span>
+
+                                <h3>
+                                    Quick revision
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div id="summaryOutput"
+                            class="summary-output">
+
+                            <div class="summary-placeholder">
+
+                                <div class="summary-placeholder-icon">
+                                    ✦
+                                </div>
+
+                                <h3>
+                                    Summary will appear here
+                                </h3>
+
+                                <p>
+                                    Add your study material to create
+                                    a concise revision summary.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="script.js?v=4"></script>
+    <script src="ai.js?v=4"></script>
+
+
+    <script>
+
+        /* ================================================
+           START DASHBOARD
+        ================================================ */
+
+        function startDashboard() {
+
+            const welcome = document.getElementById("welcomeScreen");
+            const app = document.getElementById("app");
+
+            if (welcome) {
+                welcome.style.display = "none";
+            }
+
+            if (app) {
+                app.style.display = "flex";
+            }
+
+            showPage("dashboardPage");
+
+            if (typeof updateDashboardStats === "function") {
+                updateDashboardStats();
+            }
+
+        }
+
+
+
+        /* ================================================
+           SHOW PAGE
+        ================================================ */
+
+        function showPage(pageId, clickedButton = null) {
+
+            const pages = document.querySelectorAll(".page");
+
+            pages.forEach(function (page) {
+
+                page.classList.remove("active-page");
+
+            });
+
+
+            const selectedPage = document.getElementById(pageId);
+
+            if (selectedPage) {
+
+                selectedPage.classList.add("active-page");
+
+            }
+
+
+            const navItems = document.querySelectorAll(".nav-item");
+
+            navItems.forEach(function (item) {
+
+                item.classList.remove("active");
+
+            });
+
+
+            if (clickedButton) {
+
+                clickedButton.classList.add("active");
+
+            }
+            else {
+
+                navItems.forEach(function (item) {
+
+                    const onclickText = item.getAttribute("onclick") || "";
+
+                    if (onclickText.includes("'" + pageId + "'")) {
+
+                        item.classList.add("active");
+
+                    }
+
+                });
+
+            }
+
+
+            /* TOPBAR TITLE */
+
+            const titles = {
+
+                dashboardPage: "Dashboard",
+
+                notesPage: "Notes",
+
+                routinePage: "Routine",
+
+                chatPage: "Study Chat",
+
+                aiPage: "AI Study Planner",
+
+                resumePage: "Resume Maker",
+
+                summaryPage: "Summary Maker"
+
+            };
+
+
+            const titleElement =
+                document.getElementById("topbarTitle");
+
+            if (titleElement) {
+
+                titleElement.textContent =
+                    titles[pageId] || "EduBuddy";
+
+            }
+
+
+            /* Scroll to top */
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
+        }
+
+
+
+        /* ================================================
+           BACK TO WELCOME
+        ================================================ */
+
+        function goToWelcome() {
+
+            const welcome =
+                document.getElementById("welcomeScreen");
+
+            const app =
+                document.getElementById("app");
+
+
+            if (app) {
+
+                app.style.display = "none";
+
+            }
+
+
+            if (welcome) {
+
+                welcome.style.display = "flex";
+
+            }
+
+        }
+
+
+
+        /* ================================================
+           CURRENT DATE
+        ================================================ */
+
+        function setCurrentDate() {
+
+            const dateElement =
+                document.getElementById("currentDate");
+
+            if (!dateElement) return;
+
+
+            const today = new Date();
+
+
+            const options = {
+
+                weekday: "short",
+
+                month: "short",
+
+                day: "numeric"
+
+            };
+
+
+            dateElement.textContent =
+                today.toLocaleDateString("en-US", options);
+
+        }
+
+
+
+        /* ================================================
+           INITIALIZE
+        ================================================ */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                setCurrentDate();
+
+                showPage("dashboardPage");
+
+                if (typeof updateDashboardStats === "function") {
+
+                    updateDashboardStats();
+
+                }
+
+            }
+        );
+
+    </script>
+
 </body>
-</html>
 
+</html>
