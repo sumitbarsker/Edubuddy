@@ -1,1 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
 
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="EduBuddy - Smart Student Study Management System"
+    >
+
+    <title>EduBuddy | Student Study Manager</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+<!-- =====================================================
+     WELCOME SCREEN
+===================================================== -->
+
+<section
+    id="welcomeScreen"
+    class="welcome-screen"
+>
+
+    <div class="welcome-container">
+
+        <div class="welcome-logo">
+            EB
+        </div>
+
+        <p class="welcome-small">
+            SMART STUDENT ASSISTANT
+        </p>
+
+        <h1>
+            Welcome to <span>EduBuddy</span>
+        </h1>
+
+        <p class="welcome-description">
+            Manage your studies, notes, routine, AI study plans,
+            resume and much more from one simple dashboard.
+        </p>
+
+        <button
+            class="primary-btn welcome-btn"
+            onclick="startDashboard()"
+        >
+            Get Started
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MAIN APPLICATION
+===================================================== -->
+
+<div
+    id="app"
+    class="app-layout"
+    style="display: none;"
+>
+
+
+    <!-- =================================================
+         SIDEBAR
+    ================================================== -->
+
+    <aside
+        id="sidebar"
+        class="sidebar"
+    >
+
+        <div class="sidebar-brand">
+
+            <div class="brand-logo">
+                EB
+            </div>
+
+            <div>
+                <h2>EduBuddy</h2>
+                <span>Student Assistant</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <button
+                class="nav-item active"
+                onclick="showPage('dashboardPage', this)"
+            >
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </button>
+
+
+            <button
+                class="nav-item"
+                onclick="showPage('notesPage', this)"
+            >
+                <span class="nav-icon">📝</span>
+                <span>Notes</span>
+            </button>
+
+
+            <button
+                class="nav-item"
+                onclick="showPage('routinePage', this)"
+            >
+                <span class="nav-icon">📅</span>
+                <span>Routine</span>
+            </button>
+
+
+            <button
+                class="nav-item"
+                onclick="showPage('chatPage', this)"
+            >
+                <span class="nav-icon">💬</span>
+                <span>Study Chat</span>
+            </button>
+
+
+            <button
+                class="nav-item"
+                onclick="showPage('aiPage', this)"
+            >
+                <span class="nav-icon">🤖</span>
+                <span>AI Study Planner</span>
+            </button>
+
+
+            <button
+                class="nav-item"
+                onclick="showPage('resumePage', this)"
+            >
+                <span class="nav-icon">📄</span>
+                <span>Resume Maker</span>
+            </button>
+
+
+            <button
+                class="nav-item"
+                onclick="showPage('summaryPage', this)"
+            >
+                <span class="nav-icon">✨</span>
+                <span>Summary Maker</span>
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button
+                class="back-home-btn"
+                onclick="goToWelcome()"
+            >
+                ← Home
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =============================================
+             TOPBAR
+        ============================================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1 id="pageTitle">
+                    Dashboard
+                </h1>
+
+                <p id="pageSubtitle">
+                    Welcome back! Let's make today productive.
+                </p>
+
+            </div>
+
+
+            <div class="topbar-date">
+
+                <span>Today</span>
+
+                <strong id="currentDate">
+                    --
+                </strong>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             DASHBOARD PAGE
+        ================================================== -->
+
+        <section
+            id="dashboardPage"
+            class="page active-page"
+        >
+
+            <div class="dashboard-welcome">
+
+                <div>
+
+                    <p class="section-label">
+                        STUDENT DASHBOARD
+                    </p>
+
+                    <h2>
+                        Study smarter with EduBuddy.
+                    </h2>
+
+                    <p>
+                        Keep your notes, tasks and study planning
+                        organized in one place.
+                    </p>
+
+                </div>
+
+                <div class="dashboard-emoji">
+                    🎓
+                </div>
+
+            </div>
+
+
+            <!-- Statistics -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📝
+                    </div>
+
+                    <div>
+                        <span>Notes</span>
+                        <strong id="notesCount">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📋
+                    </div>
+
+                    <div>
+                        <span>Tasks</span>
+                        <strong id="tasksCount">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🤖
+                    </div>
+
+                    <div>
+                        <span>AI Plans</span>
+                        <strong id="aiPlansCount">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        💬
+                    </div>
+
+                    <div>
+                        <span>Messages</span>
+                        <strong id="chatCount">0</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Dashboard Cards -->
+
+            <div class="dashboard-grid">
+
+
+                <!-- Quick Notes -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h3>Quick Note</h3>
+                            <p>Save something important.</p>
+                        </div>
+
+                        <span class="card-icon">📝</span>
+
+                    </div>
+
+
+                    <textarea
+                        id="dashboardNote"
+                        placeholder="Write a quick note..."
+                    ></textarea>
+
+
+                    <button
+                        class="primary-btn"
+                        onclick="saveDashboardNote()"
+                    >
+                        Save Note
+                    </button>
+
+                </div>
+
+
+
+                <!-- Reminder -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h3>Study Reminder</h3>
+                            <p>Set a reminder for your study session.</p>
+                        </div>
+
+                        <span class="card-icon">⏰</span>
+
+                    </div>
+
+
+                    <input
+                        type="text"
+                        id="subject"
+                        placeholder="Subject / Task"
+                    >
+
+
+                    <input
+                        type="time"
+                        id="reminderTime"
+                    >
+
+
+                    <button
+                        class="primary-btn"
+                        onclick="setReminder()"
+                    >
+                        Set Reminder
+                    </button>
+
+                </div>
+
+
+
+                <!-- Quote -->
+
+                <div class="dashboard-card quote-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h3>Daily Motivation</h3>
+                            <p>Keep going.</p>
+                        </div>
+
+                        <span class="card-icon">💡</span>
+
+                    </div>
+
+
+                    <div
+                        id="quoteBox"
+                        class="quote-box"
+                    >
+                        Small progress every day becomes
+                        big progress over time.
+                    </div>
+
+                </div>
+
+
+
+                <!-- Quick Actions -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h3>Quick Actions</h3>
+                            <p>Open your most used tools.</p>
+                        </div>
+
+                        <span class="card-icon">⚡</span>
+
+                    </div>
+
+
+                    <div class="quick-actions">
+
+                        <button
+                            onclick="showPage('notesPage')"
+                        >
+                            📝 Notes
+                        </button>
+
+                        <button
+                            onclick="showPage('routinePage')"
+                        >
+                            📅 Routine
+                        </button>
+
+                        <button
+                            onclick="showPage('aiPage')"
+                        >
+                            🤖 AI Planner
+                        </button>
+
+                        <button
+                            onclick="showPage('chatPage')"
+                        >
+                            💬 Chat
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             NOTES PAGE
+        ================================================== -->
+
+        <section
+            id="notesPage"
+            class="page"
+        >
+
+            <div class="page-header">
+
+                <div>
+                    <p class="section-label">NOTES</p>
+
+                    <h2>
+                        My Study Notes
+                    </h2>
+
+                    <p>
+                        Store important study points and ideas.
+                    </p>
+                </div>
+
+                <span class="large-icon">📝</span>
+
+            </div>
+
+
+            <div class="content-card">
+
+                <textarea
+                    id="noteInput"
+                    class="large-input"
+                    placeholder="Write your note here..."
+                ></textarea>
+
+
+                <div class="button-row">
+
+                    <button
+                        class="primary-btn"
+                        onclick="addNote()"
+                    >
+                        Save Note
+                    </button>
+
+                    <button
+                        class="secondary-btn"
+                        onclick="clearNoteInput()"
+                    >
+                        Clear
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="content-card">
+
+                <div class="card-title-row">
+
+                    <h3>
+                        Saved Notes
+                    </h3>
+
+                    <span id="notesPageCount">
+                        0 notes
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="notesList"
+                    class="notes-list"
+                >
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ROUTINE PAGE
+        ================================================== -->
+
+        <section
+            id="routinePage"
+            class="page"
+        >
+
+            <div class="page-header">
+
+                <div>
+
+                    <p class="section-label">
+                        ROUTINE MANAGER
+                    </p>
+
+                    <h2>
+                        Study Routine
+                    </h2>
+
+                    <p>
+                        Add and manage your daily study tasks.
+                    </p>
+
+                </div>
+
+                <span class="large-icon">📅</span>
+
+            </div>
+
+
+            <div class="content-card">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="taskInput">
+                            Task
+                        </label>
+
+                        <input
+                            type="text"
+                            id="taskInput"
+                            placeholder="e.g. Study Machine Learning"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="taskTime">
+                            Time
+                        </label>
+
+                        <input
+                            type="time"
+                            id="taskTime"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="primary-btn"
+                    onclick="addTask()"
+                >
+                    + Add Task
+                </button>
+
+            </div>
+
+
+            <div class="content-card">
+
+                <div class="card-title-row">
+
+                    <h3>
+                        Today's Routine
+                    </h3>
+
+                    <span id="taskPageCount">
+                        0 tasks
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="tasksList"
+                    class="tasks-list"
+                >
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             STUDY CHAT PAGE
+        ================================================== -->
+
+        <section
+            id="chatPage"
+            class="page"
+        >
+
+            <div class="page-header">
+
+                <div>
+
+                    <p class="section-label">
+                        STUDY CHAT
+                    </p>
+
+                    <h2>
+                        Ask EduBuddy
+                    </h2>
+
+                    <p>
+                        Chat about your study questions.
+                    </p>
+
+                </div>
+
+                <span class="large-icon">💬</span>
+
+            </div>
+
+
+            <div class="chat-container">
+
+
+                <div
+                    id="chatMessages"
+                    class="chat-messages"
+                >
+
+                    <div class="bot-message">
+
+                        <strong>EduBuddy</strong>
+
+                        <p>
+                            Hi! I'm EduBuddy.
+                            Ask me something about your studies.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chat-input-area">
+
+                    <input
+                        type="text"
+                        id="chatUser"
+                        placeholder="Your name"
+                    >
+
+
+                    <input
+                        type="text"
+                        id="chatMessage"
+                        placeholder="Type your study question..."
+                        onkeydown="handleChatEnter(event)"
+                    >
+
+
+                    <button
+                        class="primary-btn"
+                        onclick="sendChat()"
+                    >
+                        Send
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             AI STUDY PLANNER
+        ================================================== -->
+
+        <section
+            id="aiPage"
+            class="page"
+        >
+
+            <div class="page-header">
+
+                <div>
+
+                    <p class="section-label">
+                        ARTIFICIAL INTELLIGENCE
+                    </p>
+
+                    <h2>
+                        AI Study Planner
+                    </h2>
+
+                    <p>
+                        Get a study priority based on your
+                        subject, difficulty, score and available time.
+                    </p>
+
+                </div>
+
+                <span class="large-icon">🤖</span>
+
+            </div>
+
+
+            <div class="content-card">
+
+                <div class="form-grid">
+
+
+                    <div class="form-group">
+
+                        <label for="aiSubject">
+                            Subject
+                        </label>
+
+                        <input
+                            type="text"
+                            id="aiSubject"
+                            placeholder="e.g. Machine Learning"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="aiDifficulty">
+                            Difficulty
+                        </label>
+
+                        <select id="aiDifficulty">
+
+                            <option value="easy">
+                                Easy
+                            </option>
+
+                            <option
+                                value="medium"
+                                selected
+                            >
+                                Medium
+                            </option>
+
+                            <option value="hard">
+                                Hard
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="aiScore">
+                            Previous Score
+                        </label>
+
+                        <input
+                            type="number"
+                            id="aiScore"
+                            min="0"
+                            max="100"
+                            placeholder="0 - 100"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="aiHours">
+                            Available Hours
+                        </label>
+
+                        <input
+                            type="number"
+                            id="aiHours"
+                            min="1"
+                            max="24"
+                            step="0.5"
+                            placeholder="e.g. 4"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="primary-btn"
+                    onclick="getAIRecommendation()"
+                >
+                    Generate AI Recommendation
+                </button>
+
+            </div>
+
+
+            <div
+                id="aiResult"
+                class="ai-result-container"
+            >
+            </div>
+
+
+            <div class="content-card">
+
+                <div class="card-title-row">
+
+                    <h3>
+                        AI Planning History
+                    </h3>
+
+                </div>
+
+
+                <div
+                    id="aiHistory"
+                    class="ai-history"
+                >
+
+                    <p class="empty-state">
+                        No AI plans generated yet.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             RESUME MAKER
+        ================================================== -->
+
+        <section
+            id="resumePage"
+            class="page"
+        >
+
+            <div class="page-header">
+
+                <div>
+
+                    <p class="section-label">
+                        CAREER TOOL
+                    </p>
+
+                    <h2>
+                        Resume Maker
+                    </h2>
+
+                    <p>
+                        Create a simple student resume.
+                    </p>
+
+                </div>
+
+                <span class="large-icon">📄</span>
+
+            </div>
+
+
+            <div class="content-card">
+
+                <div class="form-grid">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Your name"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="your@email.com"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Phone
+                        </label>
+
+                        <input
+                            type="text"
+                            id="phone"
+                            placeholder="Phone number"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Education
+                        </label>
+
+                        <input
+                            type="text"
+                            id="education"
+                            placeholder="B.Tech AIML"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full-width">
+
+                        <label>
+                            Skills
+                        </label>
+
+                        <textarea
+                            id="skills"
+                            placeholder="Python, Machine Learning, HTML, CSS..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="form-group full-width">
+
+                        <label>
+                            Experience / Projects
+                        </label>
+
+                        <textarea
+                            id="experience"
+                            placeholder="Projects, internships or experience..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="primary-btn"
+                    onclick="generateResume()"
+                >
+                    Generate Resume
+                </button>
+
+            </div>
+
+
+            <div
+                id="resumeOutput"
+                class="resume-output"
+            >
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SUMMARY MAKER
+        ================================================== -->
+
+        <section
+            id="summaryPage"
+            class="page"
+        >
+
+            <div class="page-header">
+
+                <div>
+
+                    <p class="section-label">
+                        STUDY TOOL
+                    </p>
+
+                    <h2>
+                        Summary Maker
+                    </h2>
+
+                    <p>
+                        Turn your study text into a short summary.
+                    </p>
+
+                </div>
+
+                <span class="large-icon">✨</span>
+
+            </div>
+
+
+            <div class="content-card">
+
+                <div class="form-group">
+
+                    <label for="summaryInput">
+                        Study Material
+                    </label>
+
+                    <textarea
+                        id="summaryInput"
+                        class="summary-input"
+                        placeholder="Paste your study material here..."
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    class="primary-btn"
+                    onclick="generateSummary()"
+                >
+                    Generate Summary
+                </button>
+
+            </div>
+
+
+            <div class="content-card">
+
+                <div class="card-title-row">
+
+                    <h3>
+                        Generated Summary
+                    </h3>
+
+                </div>
+
+
+                <div
+                    id="summaryOutput"
+                    class="summary-output"
+                >
+
+                    <p class="empty-state">
+                        Your summary will appear here.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="script.js"></script>
+
+<script src="ai.js"></script>
+
+
+</body>
+</html>
